@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# let a running deploy finish rather than cancelling it half-published
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        # the Vite app lives in a subfolder, not at the repo root
+        working-directory: scoala_balet_alice
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: scoala_balet_alice/package-lock.json
+
+      - run: npm ci
+
+      # runs `tsc -b && vite build`, so a type error fails the deploy
+      - name: Build
+        run: npm run build
+        env:
+          # Pages serves a project site from /<repo>/; assets need that prefix
+          VITE_BASE: /${{ github.event.repository.name }}/
+
+      - uses: actions/configure-pages@v5
+
+      # path is resolved from the workspace root, not working-directory
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: scoala_balet_alice/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
