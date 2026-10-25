@@ -56,8 +56,14 @@ to oldstyle figures, which look uneven in ages, times and phone numbers.
 Full-bleed background; content is held together by `--stage` (max-width) and
 `--gutter`, never by a visible frame or card around the page.
 
-**Nothing is boxed.** Structure comes from hairline rules (`--line`) and
-whitespace. A bordered card immediately looks foreign here.
+**Nothing is boxed** — with one deliberate exception. Structure comes from
+hairline rules (`--line`) and whitespace; a bordered card around text or around
+the page itself immediately looks foreign.
+
+The exception is the schedule table in the courses section: the user asked for
+it framed, and genuine tabular data earns a frame. It sits on `--bg` so the
+neutral surface lifts it off the blush band behind it. Don't "fix" it by
+stripping the border.
 
 Sections are `<section class="section">` (full-bleed, carries the background)
 wrapping `<div class="section__inner">` (capped at `--stage`). Backgrounds
