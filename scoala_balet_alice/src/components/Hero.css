@@ -1,0 +1,357 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: clamp(22px, 2.6vw, 38px) var(--gutter) 0;
+  overflow: hidden;
+}
+
+/* ---------- nav ---------- */
+
+.hero__nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 80px);
+  width: 100%;
+  max-width: var(--stage);
+  margin-inline: auto;
+}
+
+.hero__brand {
+  display: grid;
+  gap: 4px;
+  line-height: 1;
+}
+
+.hero__brand-name {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(22px, 1.8vw, 28px);
+  letter-spacing: 0.07em;
+  color: var(--accent-deep);
+}
+
+/* hairline + wide tracking keeps the kicker legible at this size */
+.hero__brand-kind {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 8px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__brand-kind::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.hero__nav nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: clamp(22px, 4.4vw, 64px);
+}
+
+.hero__nav nav a {
+  position: relative;
+  padding-bottom: 7px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(15px, 1.25vw, 17px);
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  transition: color 0.35s ease;
+}
+
+/* a short rule that opens from the centre — softer than a full-width underline */
+.hero__nav nav a::after {
+  content: '';
+  position: absolute;
+  inset: auto 50% 0;
+  width: 26px;
+  height: 1px;
+  margin-left: -13px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__nav nav a:hover,
+.hero__nav nav a.is-active {
+  color: var(--ink);
+}
+
+.hero__nav nav a:hover::after,
+.hero__nav nav a.is-active::after {
+  transform: scaleX(1);
+}
+
+.hero__burger {
+  display: grid;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.hero__burger span {
+  display: block;
+  width: 28px;
+  height: 1px;
+  margin-left: auto;
+  background: var(--accent-deep);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__burger span:nth-child(2) {
+  width: 20px;
+}
+
+.hero__burger span:last-child {
+  width: 12px;
+}
+
+.hero__burger:hover span {
+  width: 28px;
+}
+
+/* ---------- collage stage ---------- */
+
+.hero__stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: var(--stage);
+  min-height: min(76svh, 700px);
+  margin: clamp(8px, 1.5vw, 20px) auto 0;
+}
+
+.hero__ghost {
+  position: absolute;
+  z-index: 1;
+  left: 1%;
+  /* clears the descender on "Academy" from the viewport edge */
+  bottom: 7%;
+  font-family: var(--serif);
+  font-size: clamp(3rem, 9.4vw, 11rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--accent);
+  opacity: 0.17;
+  user-select: none;
+}
+
+.hero__fig {
+  position: absolute;
+  margin: 0;
+  pointer-events: none;
+}
+
+.hero__fig img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* the farther dancer: smaller, lifted, slightly washed out — atmospheric depth */
+.hero__fig--back {
+  z-index: 2;
+  top: -2%;
+  left: 27%;
+  height: 56%;
+}
+
+.hero__fig--back img {
+  opacity: 0.93;
+  filter: saturate(0.9) brightness(1.03)
+    drop-shadow(14px 20px 26px rgba(50, 34, 24, 0.17));
+}
+
+/* the nearer dancer: large, full contrast, overlaps everything on the left */
+.hero__fig--front {
+  z-index: 3;
+  bottom: 3%;
+  left: 1%;
+  height: 86%;
+}
+
+.hero__fig--front img {
+  filter: drop-shadow(26px 32px 38px rgba(50, 34, 24, 0.28));
+}
+
+/* ---------- copy column ---------- */
+
+.hero__copy {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: 0;
+  width: min(44%, 480px);
+  transform: translateY(-50%);
+  display: grid;
+  justify-items: start;
+  gap: 22px;
+}
+
+.hero__motto {
+  font-family: var(--script);
+  font-size: clamp(2.3rem, 3.9vw, 3.6rem);
+  font-weight: 400;
+  /* script ascenders and descenders need the extra room */
+  line-height: 1.32;
+  letter-spacing: 0;
+  /* keeps "în" from being stranded at the end of a line */
+  text-wrap: balance;
+  color: var(--accent-deep);
+}
+
+/* an underlined link rather than a boxed button — the frame fought the page */
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: border-color 0.35s ease;
+}
+
+.hero__cta svg {
+  width: 28px;
+  color: var(--accent-deep);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__cta:hover {
+  border-bottom-color: var(--accent-deep);
+}
+
+.hero__cta:hover svg {
+  transform: translateX(6px);
+}
+
+/* ---------- scroll cue ---------- */
+
+.hero__scroll {
+  position: absolute;
+  z-index: 4;
+  right: 0;
+  bottom: 4%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-deep);
+}
+
+.hero__scroll span {
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.hero__scroll svg {
+  width: 14px;
+  animation: hero-bob 2.8s ease-in-out infinite;
+}
+
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1100px) {
+  .hero__copy {
+    width: min(46%, 390px);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .hero__nav nav,
+  .hero__scroll,
+  .hero__fig--back {
+    display: none;
+  }
+
+  .hero__stage {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin-top: clamp(26px, 7vw, 44px);
+  }
+
+  /* message first, dancer underneath it bleeding off the bottom edge */
+  .hero__copy {
+    order: 1;
+    position: static;
+    width: 100%;
+    transform: none;
+    justify-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .hero__motto {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+  }
+
+  .hero__fig--front {
+    order: 2;
+    position: relative;
+    inset: auto;
+    align-self: center;
+    width: 94%;
+    max-width: 330px;
+    height: auto;
+    margin-top: clamp(20px, 6vw, 40px);
+  }
+
+  .hero__fig--front img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero__ghost {
+    /* sits behind the dancer as a soft band; must wrap, unlike on desktop */
+    bottom: 8%;
+    left: 50%;
+    width: 112%;
+    transform: translateX(-50%);
+    white-space: normal;
+    text-align: center;
+    line-height: 0.95;
+    font-size: clamp(2.6rem, 14vw, 5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll svg {
+    animation: none;
+  }
+}

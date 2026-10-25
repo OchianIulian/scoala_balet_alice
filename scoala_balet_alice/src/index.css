@@ -1,0 +1,116 @@
+:root {
+  --bg: #efece7;
+  /* blush panel alternated with --bg; needs a real hue + lightness shift,
+     a 3% tint is invisible once the band is a screen tall */
+  --bg-alt: #f3e5df;
+  --ink: #1a1613;
+  --ink-soft: #554d46;
+  --muted: #938a80;
+  --line: #ded7cf;
+  --accent: #b0876a;
+  --accent-deep: #8a6447;
+
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  /* Great Vibes carries the full Romanian set (ș ț î ă) — Parisienne does not */
+  --script: 'Great Vibes', 'Cormorant Garamond', cursive;
+
+  --gutter: clamp(22px, 4.5vw, 86px);
+  /* keeps the collage cohesive on ultrawide screens without drawing a visible frame */
+  --stage: 1460px;
+  /* one rhythm for every section, so stacked paddings can't add up to a void */
+  --section-y: clamp(52px, 6vw, 84px);
+
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  /* Cormorant defaults to oldstyle figures, which read unevenly in ages,
+     times and phone numbers; Inter is unaffected. */
+  font-variant-numeric: lining-nums;
+  color: var(--ink-soft);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---------- shared section scaffolding ---------- */
+
+/* the section element carries the full-bleed background; the inner wrapper
+   holds the content to --stage so the colour band spans the whole viewport */
+.section {
+  padding-block: var(--section-y);
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section__inner {
+  width: 100%;
+  max-width: var(--stage);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* script, warm and centred — the academy's own flyers use a script face */
+.section__title {
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 4.4vw, 3.4rem);
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--accent-deep);
+}
+
+.section__intro {
+  max-width: 56ch;
+  margin: 16px auto 0;
+  font-size: 14.5px;
+  line-height: 1.85;
+  text-align: center;
+  text-wrap: pretty;
+  color: var(--ink-soft);
+}
