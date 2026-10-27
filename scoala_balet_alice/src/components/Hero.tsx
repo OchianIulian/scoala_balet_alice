@@ -7,6 +7,7 @@ const NAV = [
   { label: 'Cursuri', href: '#cursuri' },
   { label: 'Profesori', href: '#profesori' },
   { label: 'Rezultate', href: '#rezultate' },
+  { label: 'Galerie', href: '#galerie' },
   { label: 'Contact', href: '#contact' },
 ]
 

@@ -32,7 +32,7 @@ function InstagramIcon() {
 
 function Contact() {
   return (
-    <section className="contact section" id="contact">
+    <section className="contact section section--alt" id="contact">
       <div className="section__inner">
         <h2 className="section__title">Vă așteptăm în sală</h2>
         <p className="section__intro">
