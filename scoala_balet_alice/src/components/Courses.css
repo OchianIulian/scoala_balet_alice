@@ -240,6 +240,14 @@
     padding: 20px var(--edge);
   }
 
+  /* the same --bg patch read as a solid block here: it spans almost the
+     whole phone width, so it gets a long fade and only part of its strength */
+  .schedule::before {
+    --band: 100vw;
+    --fade-x: 20vw;
+    opacity: 0.55;
+  }
+
   /* desktop rows need no dividers (the user asked for them gone), but the
      stacked cards here do. The rule sits on the row, not the cells, so the
      card layout can't inherit a line per cell */
