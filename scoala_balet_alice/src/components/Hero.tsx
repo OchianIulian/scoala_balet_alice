@@ -1,16 +1,9 @@
 import { useEffect, useState, type CSSProperties } from 'react'
 import arabesque from '../assets/cutouts/arabesque.png'
 import tutu from '../assets/cutouts/tutu.png'
+import { NAV } from '../nav'
 import './Hero.css'
 
-const NAV = [
-  { label: 'Acasă', href: '#acasa', active: true },
-  { label: 'Cursuri', href: '#cursuri' },
-  { label: 'Profesori', href: '#profesori' },
-  { label: 'Rezultate', href: '#rezultate' },
-  { label: 'Galerie', href: '#galerie' },
-  { label: 'Contact', href: '#contact' },
-]
 
 function Hero() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -40,7 +33,7 @@ function Hero() {
             <a
               key={item.href}
               href={item.href}
-              className={item.active ? 'is-active' : undefined}
+              className={item.href === '#acasa' ? 'is-active' : undefined}
             >
               {item.label}
             </a>
