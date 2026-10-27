@@ -258,7 +258,7 @@
 .hero__fig--back img {
   opacity: 0.93;
   filter: saturate(0.9) brightness(1.03)
-    drop-shadow(14px 20px 26px rgba(50, 34, 24, 0.17));
+    drop-shadow(14px 20px 26px rgba(var(--shadow), 0.17));
 }
 
 /* the nearer dancer: large, full contrast, overlaps everything on the left */
@@ -270,7 +270,7 @@
 }
 
 .hero__fig--front img {
-  filter: drop-shadow(26px 32px 38px rgba(50, 34, 24, 0.28));
+  filter: drop-shadow(26px 32px 38px rgba(var(--shadow), 0.28));
 }
 
 /* ---------- copy column ---------- */

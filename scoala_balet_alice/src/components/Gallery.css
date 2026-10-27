@@ -28,7 +28,7 @@
   scroll-snap-align: start;
   border-radius: 50% 50% 0 0 / 50% 50% 0 0;
   background: var(--line);
-  box-shadow: 0 30px 50px -34px rgba(50, 34, 24, 0.5);
+  box-shadow: 0 30px 50px -34px rgba(var(--shadow), 0.5);
 }
 
 /* every other arch sits a little lower, so the row moves like a line of

@@ -112,7 +112,7 @@
 }
 
 .schedule__table tbody tr:hover > * {
-  background: rgba(176, 135, 106, 0.07);
+  background: rgba(110, 47, 62, 0.05);
 }
 
 /* a thin accent bar slides in at the row's edge on hover */

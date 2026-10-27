@@ -2,12 +2,29 @@
   --bg: #efece7;
   /* blush panel alternated with --bg; needs a real hue + lightness shift,
      a 3% tint is invisible once the band is a screen tall */
-  --bg-alt: #f3e5df;  --ink: #1a1613;
-  --ink-soft: #554d46;
-  --muted: #938a80;
-  --line: #ded7cf;
-  --accent: #b0876a;
-  --accent-deep: #8a6447;
+  --bg-alt: #f3e5df;
+
+  /* the palette is three colours only — off-white, blush and velvet; inks,
+     rules and accents are all drawn from the velvet so nothing reads brown */
+  --ink: #2b1a20;
+  --ink-soft: #5c4a50;
+  --muted: #9c8a8f;
+  --line: #e3d5d4;
+  /* hairlines, ornaments, outlines */
+  --accent: #b57f8a;
+  /* titles, numerals, filled marks, hovers */
+  --accent-deep: #6e2f3e;
+
+  /* the deep "theatre curtain" band that breaks the light bg/blush rhythm;
+     used sparingly — the results section and the footer only */
+  --velvet: #4a2530;
+  --on-velvet: #f6ece8;
+  --on-velvet-soft: rgba(246, 236, 232, 0.7);
+  --on-velvet-line: rgba(246, 236, 232, 0.16);
+  /* blush, lifted for dark ground: titles and highlights on velvet */
+  --on-velvet-accent: #ecc8c6;
+  /* velvet-tinted shadow colour, as rgb channels for rgba() */
+  --shadow: 60, 26, 36;
 
   --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --serif: 'Cormorant Garamond', Georgia, serif;
@@ -93,6 +110,19 @@ img {
 
 .section--alt {
   background: var(--bg-alt);
+}
+
+.section--velvet {
+  background: var(--velvet);
+  color: var(--on-velvet-soft);
+}
+
+.section--velvet .section__title {
+  color: var(--on-velvet-accent);
+}
+
+.section--velvet .section__intro {
+  color: var(--on-velvet-soft);
 }
 
 .section__inner {

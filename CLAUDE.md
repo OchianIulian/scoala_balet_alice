@@ -81,6 +81,18 @@ wrapping `<div class="section__inner">` (capped at `--stage`). Backgrounds
 alternate `--bg` / `--bg-alt` down the page via `.section--alt`, so the page
 reads as distinct bands instead of one flat sheet.
 
+The two light tones alone were too monotonous, so one deep accent band breaks
+the rhythm: `--velvet` (a theatre-curtain burgundy) via `.section--velvet`,
+with `--on-velvet` text and `--gold` titles and highlights. It is used only on
+the results section ("pe scene mari", the stage moment) and the footer. Keep
+it rare — a third velvet band would make the page heavy.
+
+**Three colours only: off-white (`--bg`), blush (`--bg-alt`) and velvet.**
+Every ink, hairline, accent and shadow is derived from the velvet: no browns,
+no gold, no new hues. If something needs emphasis, use `--accent-deep` (a
+lighter velvet) on light ground or `--on-velvet-accent` (lifted blush) on
+velvet.
+
 Every section uses `padding-block: var(--section-y)` so stacked paddings cannot
 add up to a dead gap between sections. Wide data rows (courses, results) are
 capped at ~1080px even though the stage is wider — otherwise the value on the

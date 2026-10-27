@@ -1,3 +1,5 @@
+/* the stage section sits on the deep velvet band: cream and blush
+   on dark, like the house before the curtain rises */
 .results__list {
   max-width: 1080px;
   margin: clamp(38px, 5vw, 62px) auto 0;
@@ -11,11 +13,11 @@
   align-items: baseline;
   gap: clamp(16px, 3vw, 48px);
   padding: clamp(20px, 2.4vw, 28px) 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--on-velvet-line);
 }
 
 .result:last-child {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--on-velvet-line);
 }
 
 .result__event h3 {
@@ -23,15 +25,15 @@
   font-weight: 600;
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   letter-spacing: 0.01em;
-  color: var(--ink);
+  color: var(--on-velvet);
 }
 
 .result__event p {
-  margin-top: 5px;
-  font-size: 10px;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--muted);
+  margin-top: 4px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--on-velvet-soft);
 }
 
 .result__places {
@@ -46,7 +48,7 @@
 .result__places li {
   font-family: var(--serif);
   font-size: clamp(1rem, 1.4vw, 1.2rem);
-  color: var(--accent-deep);
+  color: var(--on-velvet-accent);
 }
 
 @media (max-width: 760px) {

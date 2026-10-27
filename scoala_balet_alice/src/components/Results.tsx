@@ -21,7 +21,7 @@ const RESULTS: Result[] = [
 
 function Results() {
   return (
-    <section className="results section section--alt" id="rezultate">
+    <section className="results section section--velvet" id="rezultate">
       <div className="section__inner">
         <h2 className="section__title">De la sala noastră, pe scene mari</h2>
         <p className="section__intro">
