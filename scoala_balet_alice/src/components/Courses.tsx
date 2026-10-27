@@ -1,9 +1,21 @@
 import './Courses.css'
 
+const WEEK = [
+  { short: 'L', name: 'Luni' },
+  { short: 'Ma', name: 'Marți' },
+  { short: 'Mi', name: 'Miercuri' },
+  { short: 'J', name: 'Joi' },
+  { short: 'V', name: 'Vineri' },
+  { short: 'S', name: 'Sâmbătă' },
+  { short: 'D', name: 'Duminică' },
+] as const
+
+type Day = (typeof WEEK)[number]['name']
+
 type Course = {
   age: string
   name: string
-  days: string
+  days: Day[]
   time: string
 }
 
@@ -11,28 +23,35 @@ const COURSES: Course[] = [
   {
     age: '3–4',
     name: 'Introducere magică în lumea baletului',
-    days: 'Marți & Joi',
+    days: ['Marți', 'Joi'],
     time: '17:00',
   },
   {
     age: '3–5',
     name: 'Primii pași de balet',
-    days: 'Duminică',
+    days: ['Duminică'],
     time: '10:00',
   },
   {
     age: '5–7',
     name: 'Dezvoltarea posturii și a coordonării',
-    days: 'Marți & Joi',
+    days: ['Marți', 'Joi'],
     time: '18:00',
   },
   {
     age: '7–10',
     name: 'Perfecționarea tehnicii și a expresivității',
-    days: 'Luni, Miercuri & Vineri',
+    days: ['Luni', 'Miercuri', 'Vineri'],
     time: '17:00',
   },
 ]
+
+// "Luni, Miercuri & Vineri"
+function dayList(days: Day[]) {
+  return days.length > 1
+    ? `${days.slice(0, -1).join(', ')} & ${days[days.length - 1]}`
+    : days[0]
+}
 
 const EXTRAS = [
   {
@@ -73,21 +92,25 @@ function Courses() {
             <tbody>
               {COURSES.map((c) => (
                 <tr key={c.age + c.time}>
-                  <th scope="row" data-label="Vârstă">
-                    <span className="schedule__pill">
-                      <span className="schedule__age">{c.age}</span>
-                      <span className="schedule__unit">ani</span>
-                    </span>
+                  <th scope="row" className="schedule__ages">
+                    <span className="schedule__age">{c.age}</span>
+                    <span className="schedule__unit">ani</span>
                   </th>
-                  <td data-label="Curs" className="schedule__name">
-                    {c.name}
+                  <td className="schedule__name">{c.name}</td>
+                  <td className="schedule__days">
+                    <span className="sr-only">{dayList(c.days)}</span>
+                    <span className="week" aria-hidden="true">
+                      {WEEK.map((d) => (
+                        <span
+                          key={d.name}
+                          className={c.days.includes(d.name) ? 'week__day is-on' : 'week__day'}
+                        >
+                          {d.short}
+                        </span>
+                      ))}
+                    </span>
                   </td>
-                  <td data-label="Zile" className="schedule__days">
-                    {c.days}
-                  </td>
-                  <td data-label="Ora" className="schedule__time">
-                    {c.time}
-                  </td>
+                  <td className="schedule__time">{c.time}</td>
                 </tr>
               ))}
             </tbody>

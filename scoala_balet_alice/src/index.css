@@ -3,6 +3,9 @@
   /* blush panel alternated with --bg; needs a real hue + lightness shift,
      a 3% tint is invisible once the band is a screen tall */
   --bg-alt: #f3e5df;
+  /* lighter than both bands, for content that has to stand off them
+     without a frame (the schedule) */
+  --surface: #fbf9f6;
   --ink: #1a1613;
   --ink-soft: #554d46;
   --muted: #938a80;
@@ -72,6 +75,16 @@ button {
 img {
   display: block;
   max-width: 100%;
+}
+
+/* read by screen readers, not shown */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ---------- shared section scaffolding ---------- */
