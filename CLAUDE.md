@@ -44,6 +44,12 @@ Section titles use `.section__title`: script, centred, `--accent-deep`. The
 serif alone read too cold and adult for a children's academy; the script matches
 the academy's own flyers. Intros use `.section__intro` and are centred too.
 
+**No tiny tracked caps.** Don't style text as small, wide-letter-spaced
+uppercase (e.g. `font-size: 10px; letter-spacing: 0.26em; text-transform:
+uppercase`, as the old "PROGRAM PE GRUPE DE VÂRSTĂ" lead-in was). The user
+dislikes it. For small labels and lead-ins use `--serif` italic in normal case
+instead.
+
 **Verify Romanian diacritics (ș ț î ă â) before adopting any new font.** Several
 otherwise-good faces lack ș/ț and fall back silently mid-word — Parisienne and
 Marcellus both fail. Probe in the browser before committing to one.
@@ -60,11 +66,15 @@ Full-bleed background; content is held together by `--stage` (max-width) and
 whitespace; a bordered card around text or around the page itself immediately
 looks foreign.
 
-The schedule table in the courses section was framed for a while; the user then
-found the frame's lines unattractive. It now sits on a patch of `--surface` (lighter than both `--bg` and `--bg-alt`, so it reads clearly) that reaches
-only a short way past the table and fades into the blush band — the user found a
-full-screen-width band ugly — with no border or
-shadow — the neutral surface still lifts the data. Don't put a frame back.
+The schedule table in the courses section has no frame (the user found its
+lines unattractive). It sits on a soft patch of `--bg` that reaches only a short
+way past the table and fades into the blush band on every side. Keep it
+subtle: a brighter near-white surface was rejected as too stark, and a band
+spanning the full screen width was rejected as ugly. Don't put a frame back.
+
+The gallery is a single-row carousel with no title — a multi-row collage made
+the page feel crowded and forced scrolling through photos, and its heading
+added nothing.
 
 Sections are `<section class="section">` (full-bleed, carries the background)
 wrapping `<div class="section__inner">` (capped at `--stage`). Backgrounds

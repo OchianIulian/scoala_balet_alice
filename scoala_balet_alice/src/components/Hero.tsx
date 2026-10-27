@@ -1,3 +1,4 @@
+import { useEffect, useState, type CSSProperties } from 'react'
 import arabesque from '../assets/cutouts/arabesque.png'
 import tutu from '../assets/cutouts/tutu.png'
 import './Hero.css'
@@ -12,6 +13,20 @@ const NAV = [
 ]
 
 function Hero() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // while the full-screen menu is open: no page scroll behind it, Escape closes
+  useEffect(() => {
+    if (!menuOpen) return
+    const close = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    document.documentElement.style.overflow = 'hidden'
+    window.addEventListener('keydown', close)
+    return () => {
+      document.documentElement.style.overflow = ''
+      window.removeEventListener('keydown', close)
+    }
+  }, [menuOpen])
+
   return (
     <section className="hero" id="acasa">
       <header className="hero__nav">
@@ -20,7 +35,7 @@ function Hero() {
           <span className="hero__brand-kind">Ballet Academy</span>
         </a>
 
-        <nav aria-label="Navigare principală">
+        <nav className="hero__links" aria-label="Navigare principală">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -32,11 +47,36 @@ function Hero() {
           ))}
         </nav>
 
-        <button className="hero__burger" type="button" aria-label="Deschide meniul">
+        <button
+          className={menuOpen ? 'hero__burger is-open' : 'hero__burger'}
+          type="button"
+          aria-label={menuOpen ? 'Închide meniul' : 'Deschide meniul'}
+          aria-expanded={menuOpen}
+          aria-controls="meniu"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
           <span />
           <span />
           <span />
         </button>
+
+        <nav
+          id="meniu"
+          className={menuOpen ? 'menu is-open' : 'menu'}
+          aria-label="Meniu"
+          inert={!menuOpen}
+        >
+          {NAV.map((item, i) => (
+            <a
+              key={item.href}
+              href={item.href}
+              style={{ '--i': i } as CSSProperties}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       </header>
 
       <div className="hero__stage">
@@ -57,14 +97,16 @@ function Hero() {
 
           <a className="hero__cta" href="#contact">
             Programează o primă ședință
-            <svg viewBox="0 0 28 8" aria-hidden="true">
-              <path
-                d="M0 4h26M22 1l4 3-4 3"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-              />
-            </svg>
+            <span className="hero__cta-dot">
+              <svg viewBox="0 0 20 10" aria-hidden="true">
+                <path
+                  d="M0 5h18M14 1l4 4-4 4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+              </svg>
+            </span>
           </a>
         </div>
 

@@ -53,14 +53,14 @@
   opacity: 0.6;
 }
 
-.hero__nav nav {
+.hero__links {
   display: flex;
   flex: 1;
   justify-content: center;
   gap: clamp(22px, 4.4vw, 64px);
 }
 
-.hero__nav nav a {
+.hero__links a {
   position: relative;
   padding-bottom: 7px;
   font-family: var(--serif);
@@ -72,7 +72,7 @@
 }
 
 /* a short rule that opens from the centre — softer than a full-width underline */
-.hero__nav nav a::after {
+.hero__links a::after {
   content: '';
   position: absolute;
   inset: auto 50% 0;
@@ -84,20 +84,31 @@
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero__nav nav a:hover,
-.hero__nav nav a.is-active {
+.hero__links a:hover,
+.hero__links a.is-active {
   color: var(--ink);
 }
 
-.hero__nav nav a:hover::after,
-.hero__nav nav a.is-active::after {
+.hero__links a:hover::after,
+.hero__links a.is-active::after {
   transform: scaleX(1);
+}
+
+/* brand and burger stay above the open menu */
+.hero__brand,
+.hero__burger {
+  position: relative;
+  z-index: 2;
 }
 
 .hero__burger {
   display: grid;
   gap: 5px;
-  padding: 0;
+  /* a thumb-sized target around the thin lines */
+  margin: -12px;
+  /* stays at the right edge on phones, where the inline links are hidden */
+  margin-left: auto;
+  padding: 12px;
   border: 0;
   background: none;
 }
@@ -108,7 +119,11 @@
   height: 1px;
   margin-left: auto;
   background: var(--accent-deep);
-  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
 }
 
 .hero__burger span:nth-child(2) {
@@ -121,6 +136,74 @@
 
 .hero__burger:hover span {
   width: 28px;
+}
+
+/* open: the three lines fold into a cross */
+.hero__burger.is-open span {
+  width: 28px;
+}
+
+.hero__burger.is-open span:nth-child(1) {
+  translate: 0 6px;
+  rotate: 45deg;
+}
+
+.hero__burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hero__burger.is-open span:nth-child(3) {
+  translate: 0 -6px;
+  rotate: -45deg;
+}
+
+/* ---------- full-screen menu ---------- */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2.6vh, 24px);
+  background: var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.45s ease,
+    visibility 0s 0.45s;
+}
+
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s ease;
+}
+
+/* links settle in one after another */
+.menu a {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--ink);
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    color 0.3s ease,
+    opacity 0.5s ease,
+    translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu.is-open a {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0s, calc(80ms + var(--i) * 55ms), calc(80ms + var(--i) * 55ms);
+}
+
+.menu a:hover {
+  color: var(--accent-deep);
 }
 
 /* ---------- collage stage ---------- */
@@ -216,33 +299,48 @@
   color: var(--accent-deep);
 }
 
-/* an underlined link rather than a boxed button — the frame fought the page */
+/* not a boxed button (the frame fought the page) and not tracked caps (the
+   user disliked them): serif italic beside an arrow in a hairline circle,
+   which fills on hover */
 .hero__cta {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  margin-top: 10px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid var(--line);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  gap: 16px;
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
   color: var(--ink);
-  transition: border-color 0.35s ease;
+}
+
+.hero__cta-dot {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent-deep);
+  transition:
+    background 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
 }
 
 .hero__cta svg {
-  width: 28px;
-  color: var(--accent-deep);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 18px;
+  transition: translate 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero__cta:hover {
-  border-bottom-color: var(--accent-deep);
+.hero__cta:hover .hero__cta-dot {
+  border-color: var(--accent-deep);
+  background: var(--accent-deep);
+  color: var(--bg);
 }
 
 .hero__cta:hover svg {
-  transform: translateX(6px);
+  translate: 4px 0;
 }
 
 /* ---------- scroll cue ---------- */
@@ -293,7 +391,7 @@
     padding-bottom: 0;
   }
 
-  .hero__nav nav,
+  .hero__links,
   .hero__scroll,
   .hero__fig--back {
     display: none;

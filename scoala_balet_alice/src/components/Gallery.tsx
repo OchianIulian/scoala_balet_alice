@@ -1,41 +1,82 @@
+import { useEffect, useRef, useState } from 'react'
 import './Gallery.css'
-import salt from '../assets/galerie/01-salt.jpg'
-import arabesqueAlb from '../assets/galerie/02-arabesque-tutu-alb.jpg'
-import extensie from '../assets/galerie/03-extensie-pe-scena.jpg'
-import inSala from '../assets/galerie/04-in-sala.jpg'
-import douaBalerine from '../assets/galerie/05-doua-balerine.jpg'
-import arabesqueRoz from '../assets/galerie/06-arabesque-roz.jpg'
 
-type Shape = 'arch' | 'round' | 'rect'
+// alt text per file in assets/galerie/; anything without an entry falls back
+// to a generic description
+const ALT: Record<string, string> = {
+  '01-salt.jpg': 'Elevă în salt pe scenă',
+  '02-arabesque-tutu-alb.jpg': 'Elevă în arabesque, în tutu alb',
+  '03-extensie-pe-scena.jpg': 'Elevă în extensie, așezată pe scenă',
+  '04-in-sala.jpg': 'Elevă zâmbind la încălzire, în sala academiei',
+  '05-doua-balerine.jpg': 'Două eleve în tutu alb pe scenă',
+  '06-arabesque-roz.jpg': 'Elevă în arabesque, în costum roz',
+  '07-arabesque-rosu.jpg': 'Elevă în arabesque, în costum roșu',
+  '08-contemporan.jpg': 'Elevă într-un moment de dans contemporan',
+  '09-arabesque-voal.jpg': 'Elevă în arabesque, în rochie albă de voal',
+}
 
-// order matters: each position has its own slot in the collage (Gallery.css)
-const PHOTOS: { src: string; alt: string; shape: Shape }[] = [
-  { src: salt, alt: 'Elevă în salt pe scenă', shape: 'arch' },
-  { src: inSala, alt: 'Elevă zâmbind la încălzire, în sala academiei', shape: 'round' },
-  { src: extensie, alt: 'Elevă în extensie, așezată pe scenă', shape: 'rect' },
-  { src: arabesqueAlb, alt: 'Elevă în arabesque, în tutu alb', shape: 'rect' },
-  { src: douaBalerine, alt: 'Două eleve în tutu alb pe scenă', shape: 'arch' },
-  { src: arabesqueRoz, alt: 'Elevă în arabesque, în costum roz', shape: 'rect' },
-]
+// every image dropped into assets/galerie/ joins the carousel, in filename order
+const PHOTOS = Object.entries(
+  import.meta.glob<string>('../assets/galerie/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+  }),
+)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, src]) => ({
+    src,
+    alt: ALT[path.split('/').pop()!] ?? 'Elevă a academiei dansând',
+  }))
+
+function Arrow({ flip }: { flip?: boolean }) {
+  return (
+    <svg viewBox="0 0 20 10" aria-hidden="true" style={flip ? { scale: '-1 1' } : undefined}>
+      <path d="M0 5h18M14 1l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.2" />
+    </svg>
+  )
+}
 
 function Gallery() {
-  return (
-    <section className="gallery section" id="galerie">
-      <div className="section__inner">
-        {/* wording from the academy's own post */}
-        <h2 className="section__title">Primii pași către marea scenă</h2>
+  const track = useRef<HTMLUListElement>(null)
+  const [atStart, setAtStart] = useState(true)
+  const [atEnd, setAtEnd] = useState(false)
 
-        <div className="gallery__stage">
-          <ul className="gallery__collage">
-            {PHOTOS.map(({ src, alt, shape }) => (
-              <li className={`gallery__item gallery__item--${shape}`} key={src}>
-                <div className="gallery__frame">
-                  <img src={src} alt={alt} loading="lazy" />
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+  const update = () => {
+    const el = track.current
+    if (!el) return
+    setAtStart(el.scrollLeft < 4)
+    setAtEnd(el.scrollLeft + el.clientWidth > el.scrollWidth - 4)
+  }
+
+  useEffect(() => {
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  // most of a screen per click; scroll-snap settles it on a photo edge
+  const go = (dir: 1 | -1) =>
+    track.current?.scrollBy({ left: dir * track.current.clientWidth * 0.7, behavior: 'smooth' })
+
+  if (PHOTOS.length === 0) return null
+
+  return (
+    <section className="gallery section" id="galerie" aria-label="Galerie foto">
+      <ul className="gallery__track" ref={track} onScroll={update}>
+        {PHOTOS.map(({ src, alt }) => (
+          <li className="gallery__item" key={src}>
+            <img src={src} alt={alt} loading="lazy" />
+          </li>
+        ))}
+      </ul>
+
+      <div className="section__inner gallery__controls">
+        <button type="button" aria-label="Pozele anterioare" disabled={atStart} onClick={() => go(-1)}>
+          <Arrow flip />
+        </button>
+        <button type="button" aria-label="Pozele următoare" disabled={atEnd} onClick={() => go(1)}>
+          <Arrow />
+        </button>
       </div>
     </section>
   )

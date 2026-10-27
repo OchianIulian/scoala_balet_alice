@@ -1,198 +1,96 @@
-/* an editorial collage rather than a grid: two staggered spreads, each
-   anchored by a large arch, with smaller photos overlapping its edges */
-.gallery__stage {
-  container-type: inline-size;
-  max-width: 1080px;
-  margin: clamp(38px, 5vw, 62px) auto 0;
+/* one row of arched photos spanning the screen edge to edge — no inset and
+   no edge fade, the user wants the dancers visible across the full width;
+   the page stays short and the photos are browsed sideways */
+.gallery__track {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 30px);
+  margin: 0;
+  /* room for the drop shadows and the staggered photos, which the
+     horizontal scroller would otherwise clip */
+  padding: 8px 0 44px;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
-/* 12 columns; each row is half a column wide, so a span of n columns by
-   2n rows is an exact square at any width */
-.gallery__collage {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: calc(100cqi / 24);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.gallery__track::-webkit-scrollbar {
+  display: none;
 }
 
 .gallery__item {
-  --ring: clamp(6px, 0.75vw, 10px);
-  --orn: clamp(10px, 1.3vw, 18px);
-  position: relative;
-}
-
-.gallery__frame {
-  position: relative;
-  height: 100%;
+  flex: none;
+  width: clamp(230px, 26vw, 380px);
+  aspect-ratio: 1;
   overflow: hidden;
+  scroll-snap-align: start;
+  border-radius: 50% 50% 0 0 / 50% 50% 0 0;
   background: var(--line);
+  box-shadow: 0 30px 50px -34px rgba(50, 34, 24, 0.5);
 }
 
-.gallery__frame img {
+/* every other arch sits a little lower, so the row moves like a line of
+   dancers instead of a filmstrip */
+.gallery__item:nth-child(even) {
+  margin-top: clamp(18px, 2.6vw, 40px);
+}
+
+.gallery__item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  scale: 1.04;
+  scale: 1.02;
   transition: scale 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.gallery__item:hover .gallery__frame img {
-  scale: 1.1;
+.gallery__item:hover img {
+  scale: 1.08;
 }
 
-/* ---------- shapes ---------- */
+/* ---------- arrows ---------- */
 
-.gallery__item--arch {
-  z-index: 1;
+.gallery__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
 }
 
-.gallery__item--arch .gallery__frame {
-  border-radius: 50% 50% 0 0 / 50% 50% 0 0;
-  box-shadow: 0 40px 70px -40px rgba(50, 34, 24, 0.45);
-}
-
-/* a hairline arch echoing the photo, nudged off its edge */
-.gallery__item--arch::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border: 1px solid var(--accent);
-  border-radius: 50% 50% 0 0 / 50% 50% 0 0;
-  translate: calc(var(--orn) * var(--dir, 1) * -1) calc(var(--orn) * -1);
-}
-
-.gallery__item--round {
-  z-index: 2;
-}
-
-.gallery__item--round .gallery__frame {
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 var(--ring) var(--bg),
-    0 34px 60px -30px rgba(50, 34, 24, 0.45);
-}
-
-/* concentric hairline ring around the circle */
-.gallery__item--round::before {
-  content: '';
-  position: absolute;
-  inset: calc((var(--ring) + var(--orn)) * -1);
+.gallery__controls button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
   border: 1px solid var(--accent);
   border-radius: 50%;
-  opacity: 0.8;
+  background: none;
+  color: var(--accent-deep);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    opacity 0.35s ease;
 }
 
-/* rects sit on top where they overlap, lifted by a passe-partout of
-   background colour so the edge reads cleanly against the photo beneath */
-.gallery__item--rect {
-  z-index: 3;
+.gallery__controls svg {
+  width: 18px;
 }
 
-.gallery__item--rect .gallery__frame {
-  box-shadow:
-    0 0 0 var(--ring) var(--bg),
-    0 36px 64px -32px rgba(50, 34, 24, 0.5);
+.gallery__controls button:hover:not(:disabled) {
+  background: var(--accent-deep);
+  color: var(--bg);
 }
 
-/* ---------- slots ---------- */
-
-/* spread one: arch left, circle top right, rect tucked into the arch's corner */
-.gallery__item:nth-child(1) {
-  grid-area: 1 / 1 / 13 / 7;
+.gallery__controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
-.gallery__item:nth-child(2) {
-  grid-area: 2 / 8 / 10 / 12;
-}
-
-.gallery__item:nth-child(3) {
-  grid-area: 10 / 6 / 19 / 11;
-}
-
-/* spread two, mirrored: arch right, two rects stepping down its left edge.
-   Overlaps only ever cover an arch's lower corner — that's stage floor in
-   every photo, while the sides carry dancers */
-.gallery__item:nth-child(4) {
-  grid-area: 19 / 1 / 27 / 7;
-}
-
-.gallery__item:nth-child(5) {
-  --dir: -1;
-  grid-area: 21 / 7 / 33 / 13;
-}
-
-.gallery__item:nth-child(6) {
-  grid-area: 29 / 4 / 37 / 8;
-}
-
-@media (max-width: 700px) {
-  .gallery__item:nth-child(1) {
-    grid-area: 1 / 1 / 21 / 11;
-  }
-
-  .gallery__item:nth-child(2) {
-    grid-area: 15 / 7 / 27 / 13;
-  }
-
-  .gallery__item:nth-child(3) {
-    grid-area: 28 / 1 / 40 / 9;
-  }
-
-  .gallery__item:nth-child(4) {
-    grid-area: 43 / 3 / 57 / 13;
-  }
-
-  /* the arch is near full width here, so its lower corners hold dancers'
-     feet; the last rect steps down past it instead of overlapping */
-  .gallery__item:nth-child(5) {
-    --dir: 1;
-    grid-area: 58 / 1 / 78 / 11;
-  }
-
-  .gallery__item:nth-child(6) {
-    grid-area: 78 / 6 / 92 / 13;
-  }
-}
-
-/* ---------- motion ---------- */
-
-/* photos rise into place and drift inside their frames as the page scrolls;
-   browsers without scroll timelines simply show the still collage */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .gallery__item {
-      animation: gallery-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 70%;
-    }
-
-    .gallery__frame img {
-      scale: 1.14;
-      animation: gallery-drift linear both;
-      animation-timeline: view();
-    }
-
-    .gallery__item:hover .gallery__frame img {
-      scale: 1.2;
-    }
-  }
-}
-
-@keyframes gallery-rise {
-  from {
-    opacity: 0;
-    translate: 0 70px;
-  }
-}
-
-@keyframes gallery-drift {
-  from {
-    translate: 0 -5%;
-  }
-  to {
-    translate: 0 5%;
+/* phones swipe; the arrows would only take up room */
+@media (hover: none) and (max-width: 700px) {
+  .gallery__controls {
+    display: none;
   }
 }
