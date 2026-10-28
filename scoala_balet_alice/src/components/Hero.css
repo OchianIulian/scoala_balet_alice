@@ -397,54 +397,72 @@
     display: none;
   }
 
+  /* message on top, then a "scene" where the dancer and the ghost text
+     share one grid cell and overlap */
   .hero__stage {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas:
+      'copy'
+      'scene';
     min-height: 0;
     margin-top: clamp(26px, 7vw, 44px);
   }
 
-  /* message first, dancer underneath it bleeding off the bottom edge */
   .hero__copy {
-    order: 1;
+    grid-area: copy;
     position: static;
     width: 100%;
     transform: none;
     justify-items: center;
     text-align: center;
-    gap: 14px;
+    gap: 16px;
   }
 
+  /* Great Vibes ships in one weight; a hairline stroke in the text colour
+     thickens it without the smudge of synthesised bold */
   .hero__motto {
-    font-size: clamp(2.1rem, 9vw, 3rem);
+    font-size: clamp(2.7rem, 12vw, 3.8rem);
+    line-height: 1.22;
+    -webkit-text-stroke: 0.7px currentColor;
   }
 
-  .hero__fig--front {
-    order: 2;
+  .hero__fig {
+    grid-area: scene;
     position: relative;
     inset: auto;
-    align-self: center;
-    width: 94%;
-    max-width: 330px;
     height: auto;
-    margin-top: clamp(20px, 6vw, 40px);
   }
 
-  .hero__fig--front img {
+  .hero__fig img {
     width: 100%;
     height: auto;
   }
 
+  /* the dancer balances the call-to-action text on her raised foot. The
+     cutout is cropped to the pointe, which sits 75% across the image, so
+     centring the figure and shifting it back a quarter of its own width
+     puts the toe under the middle of the link; the extra 33px (half the
+     50px circle plus the 16px gap) moves it under the middle of the words.
+     The arm runs off the left edge */
+  .hero__fig--front {
+    justify-self: center;
+    align-self: start;
+    width: 88%;
+    max-width: 420px;
+    margin-top: -12px;
+    translate: calc(-25% - 33px) 0;
+  }
+
   .hero__ghost {
-    /* sits behind the dancer as a soft band; must wrap, unlike on desktop */
-    bottom: 8%;
-    left: 50%;
-    width: 112%;
-    transform: translateX(-50%);
+    grid-area: scene;
+    position: static;
+    align-self: end;
+    justify-self: center;
+    margin-bottom: 10%;
     white-space: normal;
     text-align: center;
     line-height: 0.95;
-    font-size: clamp(2.6rem, 14vw, 5rem);
+    font-size: clamp(3rem, 16vw, 5.4rem);
   }
 }
 
