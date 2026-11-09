@@ -179,13 +179,23 @@
     gap: 8px;
   }
 
+  /* the copy's children join the hero grid, so the button can drop below
+     the dancers instead of shouting above them */
   .hero__copy {
-    justify-items: center;
+    display: contents;
     text-align: center;
+  }
+
+  .hero__title {
+    justify-self: center;
   }
 
   .hero__title span {
     margin-top: 8px;
+  }
+
+  .hero__motto {
+    margin-bottom: 0;
   }
 
   .hero__art {
@@ -193,19 +203,21 @@
     max-width: 460px;
   }
 
-  /* on a narrow screen the blobs would sit on the title; keep one, beside
-     the dancers */
-  .hero__blob--a,
-  .hero__blob--c {
-    display: none;
+  /* a quiet pale pill here, not the full rose gradient */
+  .hero .button {
+    order: 1;
+    justify-self: center;
+    margin-top: 4px;
+    padding: 12px 24px;
+    background: var(--tint);
+    box-shadow: none;
+    font-size: 14px;
+    color: var(--accent-deep);
   }
 
-  .hero__blob--b {
-    top: auto;
-    bottom: 12%;
-    right: 3%;
-    width: 42px;
-    height: 48px;
+  /* on a narrow screen the blobs only crowd the title and the button */
+  .hero__blob {
+    display: none;
   }
 }
 
