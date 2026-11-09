@@ -13,7 +13,7 @@ const TEACHERS: Teacher[] = [
   {
     name: 'Alice-Diana Tudurii',
     role: 'Fondatoare · profesor coordonator',
-    note: 'Predă grupele de balet clasic și coordonează programul academiei.',
+    note: 'S-a format ca balerină la Universitatea Națională de Arte „George Enescu” din Iași și a dansat pe scena Ateneului, dar și în gala proiectului național „Sub cupola artei instrumentale și vocale”. Astăzi le deschide celor mici drumul spre baletul clasic și coordonează programul academiei.',
     photo: alicePhoto,
   },
   {

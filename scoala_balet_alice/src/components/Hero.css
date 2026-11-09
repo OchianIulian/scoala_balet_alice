@@ -1,4 +1,9 @@
 .hero {
+  /* the browser restores the scroll position on refresh by re-finding an
+     element on screen; picked mid-animation (the bloom, the blobs, the
+     brushstroke) it lands the page a few pixels down. Nothing in the hero
+     may serve as that anchor */
+  overflow-anchor: none;
   position: relative;
   display: flex;
   align-items: center;
@@ -95,7 +100,9 @@
   inset: -6%;
   width: 112%;
   height: 112%;
-  animation: hero-breathe 9s ease-in-out infinite;
+  /* static on purpose: the noise filter is costly to draw, and animating it
+     (a slow "breathing" scale) redrew it every frame, which stalled the page
+     for ~170ms each time the hero scrolled back into view */
 }
 
 .hero__fig {
@@ -170,16 +177,6 @@
   50% {
     translate: 0 -14px;
     rotate: 8deg;
-  }
-}
-
-@keyframes hero-breathe {
-  0%,
-  100% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.03;
   }
 }
 
@@ -307,7 +304,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero__blob,
-  .hero__splash,
   .hero__swash,
   .hero__title,
   .hero__motto,
