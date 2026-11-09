@@ -1,8 +1,7 @@
 import arabesque from '../assets/cutouts/arabesque.png'
-import tutu from '../assets/cutouts/tutu.png'
 import './Hero.css'
 
-// a rose-and-lilac watercolour bloom behind the dancers. Translucent washes
+// a rose-and-lilac watercolour bloom behind the dancer. Translucent washes
 // are pushed around by fractal noise so their edges run like wet paint, then
 // the edge is sharpened against a blurred copy — pigment pools at the rim of
 // a real wash, and that darker rim is what sells it
@@ -31,7 +30,7 @@ function Splash() {
       </g>
 
       {/* stray drops flicked off the brush */}
-      <g filter="url(#drops)" fill="#dc97ad" opacity="0.6">
+      <g className="hero__drops" filter="url(#drops)" fill="#dc97ad" opacity="0.6">
         <circle cx="72" cy="260" r="8" />
         <circle cx="52" cy="312" r="3.5" />
         <circle cx="105" cy="438" r="5.5" />
@@ -48,6 +47,31 @@ function Splash() {
   )
 }
 
+// a rose brushstroke under the name, like a marker swipe: a tapered band
+// whose edges are roughened by noise, lighter where the brush runs dry
+function Swash() {
+  return (
+    <svg className="hero__swash" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <filter id="swash-edge" x="-5%" y="-40%" width="110%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035 0.25" numOctaves="3" seed="2" />
+          <feDisplacementMap in="SourceGraphic" scale="7" />
+        </filter>
+        <linearGradient id="swash-ink" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stopColor="#eaa6bb" />
+          <stop offset="0.7" stopColor="#f0b9c8" />
+          <stop offset="1" stopColor="#f6d2dc" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M6 16 C 90 9, 230 12, 394 7 L 392 31 C 270 35, 140 34, 9 37 C 4 30, 3 22, 6 16 Z"
+        fill="url(#swash-ink)"
+        filter="url(#swash-edge)"
+      />
+    </svg>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero" id="acasa">
@@ -59,8 +83,11 @@ function Hero() {
       <div className="hero__inner">
         <div className="hero__copy">
           <h1 className="hero__title">
-            Alice Tudurii
-            <span>Ballet Academy</span>
+            <span className="hero__name">
+              Alice Tudurii
+              <Swash />
+            </span>
+            <span className="hero__kind">Ballet Academy</span>
           </h1>
 
           <p className="hero__motto">Unde pașii mici cresc în dansatori mari</p>
@@ -75,10 +102,6 @@ function Hero() {
 
         <div className="hero__art">
           <Splash />
-
-          <figure className="hero__fig hero__fig--back">
-            <img src={tutu} alt="Balerină în arabesque, costum alb de scenă" />
-          </figure>
 
           <figure className="hero__fig hero__fig--front">
             <img src={arabesque} alt="Dansatoare într-un salt de dans contemporan" />

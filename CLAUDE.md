@@ -88,9 +88,16 @@ scrolled. Contact is the pill on the right rather than an inline link. Phones
 get a burger and a full-screen menu.
 
 **Hero:** name + motto + button on the left; on the right an SVG watercolour
-bloom (feTurbulence displacement, edge-darkened) with the two transparent-PNG
-cutouts from `src/assets/cutouts/` layered over it at different scales, each
-with its own drop shadow.
+bloom (feTurbulence displacement, edge-darkened) with a single transparent-PNG
+cutout (`src/assets/cutouts/arabesque.png`) centred over it. A second, smaller
+dancer behind it was removed: one figure reads cleaner. The name carries a
+rose brushstroke highlight (`Swash` in `Hero.tsx`) across the lower part of
+the letters, drawn in once on load, on desktop and phones alike.
+
+On phones the hero is deliberately lighter: smaller 600-weight title, rose
+motto, a larger dancer, quiet pale button below her, no
+blobs or paint drops, the header wordmark hidden until the page scrolls, and
+the pieces fading in one after another on load.
 
 **Courses:** the schedule is a weekly timetable (days across, start times
 down) of white tiles on the blush band, classes as age pills. No ruled lines.

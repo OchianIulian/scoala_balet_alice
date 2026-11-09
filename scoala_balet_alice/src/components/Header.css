@@ -197,4 +197,17 @@
   .header__burger {
     display: grid;
   }
+
+  /* over the hero the big title right below already says the name; the
+     wordmark fades in once the page scrolls */
+  .header__brand {
+    transition:
+      opacity 0.35s ease,
+      visibility 0.35s;
+  }
+
+  .header:not(.is-scrolled) .header__brand {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
