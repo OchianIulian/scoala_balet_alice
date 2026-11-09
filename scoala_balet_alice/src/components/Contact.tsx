@@ -40,7 +40,7 @@ function Contact() {
         </p>
 
         <ul className="contact__list">
-          <li className="contact__item">
+          <li className="contact__item reveal">
             <a href={MAPS_URL} target="_blank" rel="noreferrer">
               <span className="contact__icon">
                 <PinIcon />
@@ -54,7 +54,7 @@ function Contact() {
             </a>
           </li>
 
-          <li className="contact__item">
+          <li className="contact__item reveal">
             <a href="tel:+40753611711">
               <span className="contact__icon">
                 <PhoneIcon />
@@ -66,7 +66,7 @@ function Contact() {
             </a>
           </li>
 
-          <li className="contact__item">
+          <li className="contact__item reveal">
             <a
               href="https://www.instagram.com/tuduriialiceballet/"
               target="_blank"

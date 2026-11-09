@@ -1,3 +1,4 @@
+import Header from './components/Header'
 import Hero from './components/Hero'
 import Courses from './components/Courses'
 import Teachers from './components/Teachers'
@@ -9,6 +10,7 @@ import Footer from './components/Footer'
 function App() {
   return (
     <>
+      <Header />
       <main>
         <Hero />
         <Courses />

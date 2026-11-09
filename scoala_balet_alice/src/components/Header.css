@@ -1,0 +1,200 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.header.is-scrolled {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px -22px rgba(var(--shadow), 0.45);
+}
+
+.header__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 4vw, 56px);
+  max-width: var(--stage);
+  margin-inline: auto;
+  padding: clamp(14px, 1.6vw, 20px) var(--gutter);
+  transition: padding 0.35s ease;
+}
+
+.header.is-scrolled .header__inner {
+  padding-block: 12px;
+}
+
+/* name in the bold sans, "Ballet Academy" in the script beneath it */
+.header__brand {
+  display: grid;
+  line-height: 1;
+}
+
+.header__name {
+  font-weight: 600;
+  font-size: clamp(17px, 1.4vw, 19px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.header__kind {
+  margin-top: 2px;
+  font-family: var(--script);
+  font-size: clamp(19px, 1.5vw, 21px);
+  color: var(--accent-deep);
+}
+
+.header__links {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: clamp(18px, 2.8vw, 40px);
+}
+
+.header__links a {
+  position: relative;
+  padding-block: 6px;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  transition: color 0.3s ease;
+}
+
+.header__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header__links a:hover {
+  color: var(--ink);
+}
+
+.header__links a:hover::after {
+  transform: scaleX(1);
+}
+
+.header__cta {
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  box-shadow: 0 10px 22px -12px rgba(var(--shadow), 0.6);
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  transition: translate 0.3s ease;
+}
+
+.header__cta:hover {
+  translate: 0 -1px;
+}
+
+/* ---------- burger, phones only ---------- */
+
+.header__burger {
+  display: none;
+  gap: 5px;
+  margin: -10px -10px -10px auto;
+  padding: 10px;
+  border: 0;
+  background: none;
+}
+
+.header__burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
+}
+
+.header__burger.is-open span:nth-child(1) {
+  translate: 0 7px;
+  rotate: 45deg;
+}
+
+.header__burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.header__burger.is-open span:nth-child(3) {
+  translate: 0 -7px;
+  rotate: -45deg;
+}
+
+/* ---------- full-screen menu ---------- */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2.4vh, 22px);
+  background: var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0s 0.4s;
+}
+
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+/* links settle in one after another */
+.menu a {
+  font-weight: 600;
+  font-size: clamp(1.7rem, 7vw, 2.4rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    color 0.3s ease,
+    opacity 0.5s ease,
+    translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu.is-open a {
+  opacity: 1;
+  translate: 0 0;
+  transition-delay: 0s, calc(60ms + var(--i) * 50ms), calc(60ms + var(--i) * 50ms);
+}
+
+.menu a:hover {
+  color: var(--accent-deep);
+}
+
+@media (max-width: 900px) {
+  .header__links,
+  .header__cta {
+    display: none;
+  }
+
+  .header__burger {
+    display: grid;
+  }
+}

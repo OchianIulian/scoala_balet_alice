@@ -32,15 +32,15 @@ function Teachers() {
 
         <ul className="teachers__list">
           {TEACHERS.map((t) => (
-            <li className="teacher" key={t.name}>
+            <li className="teacher reveal" key={t.name}>
               {t.photo && (
                 <figure className="teacher__photo">
                   <img src={t.photo} alt={t.name} loading="lazy" />
                 </figure>
               )}
 
-              <p className="teacher__role">{t.role}</p>
               <h3 className="teacher__name">{t.name}</h3>
+              <p className="teacher__role">{t.role}</p>
               <p className="teacher__note">{t.note}</p>
             </li>
           ))}

@@ -1,351 +1,226 @@
-/* ---------- lead-in line, used above both blocks ---------- */
+/* ---------- intro: text beside a leaf-cornered photo ---------- */
 
-/* serif italic between hairlines — the user dislikes tiny tracked caps */
-.courses__lead {
-  display: flex;
+.courses__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   align-items: center;
-  gap: 18px;
-  max-width: 560px;
-  margin: clamp(34px, 4vw, 52px) auto 0;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.15rem, 1.5vw, 1.3rem);
-  text-align: center;
-  white-space: nowrap;
-  color: var(--accent-deep);
+  gap: clamp(32px, 6vw, 96px);
 }
 
-.courses__lead::before,
-.courses__lead::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-
-/* ---------- schedule table ---------- */
-
-/* no frame: the table sits on a patch of neutral surface that dissolves into
-   the blush on every side, so the data is lifted without a single hard edge */
-.schedule {
-  --width: min(1080px, 100vw - 2 * var(--gutter));
-  --edge: clamp(16px, 2.2vw, 28px);
-  --fade-y: clamp(28px, 3.6vw, 48px);
-  position: relative;
-  isolation: isolate;
-  max-width: 1080px;
-  margin: clamp(14px, 1.8vw, 24px) auto 0;
-  /* the vertical fade happens inside this padding, so the band never
-     reaches over the lead-in lines above and below */
-  padding-block: calc(var(--fade-y) + clamp(4px, 0.8vw, 10px));
-}
-
-.schedule + .courses__lead {
-  margin-top: clamp(32px, 4vw, 56px);
-}
-
-/* the band reaches only a short way past the table on each side; on phones
-   that's the gutter, so it never runs off the screen */
-.schedule::before {
-  --band: min(100vw, var(--width) + 2 * clamp(32px, 5vw, 72px));
-  --fade-x: calc((var(--band) - var(--width)) / 2);
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  left: 50%;
-  width: var(--band);
-  translate: -50% 0;
-  /* --bg on the blush band: a quiet lift, which the user preferred over a
-     brighter surface */
-  background: var(--bg);
-  mask-image:
-    linear-gradient(
-      to right,
-      transparent,
-      #000 var(--fade-x),
-      #000 calc(100% - var(--fade-x)),
-      transparent
-    ),
-    linear-gradient(
-      to bottom,
-      transparent,
-      #000 var(--fade-y),
-      #000 calc(100% - var(--fade-y)),
-      transparent
-    );
-  mask-composite: intersect;
-  pointer-events: none;
-}
-
-/* row rules and the hover tint thin out at the ends instead of stopping dead */
-.schedule__table {
-  width: 100%;
-  border-collapse: collapse;
+.section__title--left {
   text-align: left;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 var(--edge),
-    #000 calc(100% - var(--edge)),
-    transparent
-  );
 }
 
-/* no filled header band — just quiet labels over a hairline */
-.schedule__table thead th {
-  padding: 16px var(--edge) 12px;
-  border-bottom: 1px solid var(--line);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--muted);
+.section__title--left::after {
+  margin-left: 0;
 }
 
-.schedule__table tbody th,
-.schedule__table tbody td {
-  padding: clamp(16px, 2vw, 22px) var(--edge);
-  font-weight: 400;
-  vertical-align: middle;
-  transition: background 0.35s ease;
+.courses__lede {
+  max-width: 50ch;
+  margin-top: clamp(18px, 2vw, 26px);
+  font-size: clamp(15px, 1.25vw, 17px);
+  text-wrap: pretty;
 }
 
-.schedule__table tbody tr:hover > * {
-  background: rgba(110, 47, 62, 0.05);
+.courses__photo {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--leaf);
+  box-shadow: 0 34px 60px -40px rgba(var(--shadow), 0.55);
 }
 
-/* a thin accent bar slides in at the row's edge on hover */
-.schedule__ages {
-  position: relative;
-  white-space: nowrap;
+.courses__photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
-.schedule__ages::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 22%;
-  bottom: 22%;
-  width: 2px;
-  background: var(--accent);
-  scale: 1 0;
-  transition: scale 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+/* ---------- sub-headings ---------- */
+
+.courses__heading {
+  margin-top: clamp(64px, 8vw, 104px);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  text-align: center;
 }
 
-.schedule__table tbody tr:hover .schedule__ages::before {
-  scale: 1 1;
+/* ---------- timetable ---------- */
+
+/* no ruled grid: white tiles on the blush band, a rose header row on top */
+.timetable {
+  display: grid;
+  gap: 8px;
+  max-width: 1120px;
+  margin: clamp(26px, 3vw, 38px) auto 0;
 }
 
-.schedule__age {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
-  line-height: 1;
+.timetable__row {
+  display: grid;
+  grid-template-columns: 76px repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.timetable__day,
+.timetable__corner {
+  padding: 12px 6px;
+  border-radius: 14px;
+  background: var(--tint);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
   color: var(--accent-deep);
 }
 
-.schedule__unit {
-  margin-left: 6px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--accent-deep);
-  opacity: 0.8;
+.timetable__corner {
+  background: none;
 }
 
-.schedule__name {
-  font-family: var(--serif);
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-  color: var(--ink);
-}
-
-/* the week as seven small medallions, class days filled */
-.week {
-  display: inline-flex;
-  gap: 4px;
-}
-
-.week__day {
+.timetable__time {
   display: grid;
   place-items: center;
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  font-size: 9.5px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted);
-  opacity: 0.6;
-}
-
-.week__day.is-on {
-  background: var(--accent-deep);
-  font-weight: 600;
-  color: var(--bg);
-  opacity: 1;
-}
-
-.schedule__time {
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
-  white-space: nowrap;
-  text-align: right;
+  font-size: 15px;
+  font-weight: 500;
   color: var(--ink);
 }
 
-.schedule__table thead th:last-child {
-  text-align: right;
+.timetable__cell {
+  display: grid;
+  min-height: 112px;
+  border-radius: 14px;
+  background: #fff;
 }
 
-/* rows settle in one after another as the table scrolls into view */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .schedule__table tbody tr {
-      animation: schedule-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 10% entry 90%;
-    }
-  }
+/* a class: age pill, start time, then the course name */
+.slot {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 6px;
+  padding: 14px 8px;
+  text-align: center;
 }
 
-@keyframes schedule-rise {
-  from {
-    opacity: 0;
-    translate: 0 18px;
-  }
+.slot__age {
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #fff;
 }
 
-@media (max-width: 820px) {
-  /* a 4-column schedule cannot shrink; each row becomes a compact card:
-     age and time on top, the course name, then the week */
-  .schedule__table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-  }
-
-  .schedule__table tbody tr {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      'age  time'
-      'name name'
-      'days days';
-    align-items: baseline;
-    row-gap: 10px;
-    padding: 20px var(--edge);
-  }
-
-  /* the same --bg patch read as a solid block here: it spans almost the
-     whole phone width, so it gets a long fade and only part of its strength */
-  .schedule::before {
-    --band: 100vw;
-    --fade-x: 20vw;
-    opacity: 0.55;
-  }
-
-  /* desktop rows need no dividers (the user asked for them gone), but the
-     stacked cards here do. The rule sits on the row, not the cells, so the
-     card layout can't inherit a line per cell */
-  .schedule__table tbody tr + tr {
-    border-top: 1px solid var(--line);
-  }
-
-  .schedule__table tbody th,
-  .schedule__table tbody td {
-    padding: 0;
-  }
-
-  .schedule__table tbody tr:hover > * {
-    background: none;
-  }
-
-  .schedule__ages {
-    grid-area: age;
-  }
-
-  .schedule__ages::before {
-    display: none;
-  }
-
-  .schedule__time {
-    grid-area: time;
-  }
-
-  .schedule__name {
-    grid-area: name;
-  }
-
-  .schedule__days {
-    grid-area: days;
-  }
+.slot__time {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
 }
 
+.slot__name {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
 
-/* ---------- secondary offerings ---------- */
+.timetable .slot__time {
+  /* the row header already says it */
+  display: none;
+}
+
+/* ---------- phones: list by day ---------- */
+
+.daylist {
+  display: none;
+  gap: 12px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.daylist__day {
+  padding: 18px 18px 6px;
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.daylist__day h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+}
+
+.daylist .slot {
+  grid-template-columns: auto auto 1fr;
+  justify-items: start;
+  align-items: center;
+  column-gap: 12px;
+  padding: 12px 0;
+  text-align: left;
+}
+
+.daylist .slot + .slot {
+  border-top: 1px solid var(--line);
+}
+
+.daylist .slot__time {
+  font-weight: 500;
+}
+
+/* ---------- personal options ---------- */
 
 .courses__extras {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(20px, 3vw, 56px);
-  max-width: 1080px;
-  /* the lead-in line above already carries the spacing */
-  margin: clamp(20px, 2.4vw, 28px) auto 0;
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 820px;
+  margin: clamp(24px, 3vw, 34px) auto 0;
 }
 
 .extra {
-  padding-top: clamp(18px, 2vw, 24px);
-  border-top: 1px solid var(--line);
+  padding: clamp(24px, 3vw, 34px);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 24px 48px -36px rgba(var(--shadow), 0.45);
   text-align: center;
 }
 
 .extra__name {
-  font-family: var(--serif);
+  margin: 0;
+  font-size: 1.1rem;
   font-weight: 600;
-  font-size: 1.2rem;
   color: var(--ink);
 }
 
 .extra__desc {
-  margin-top: 8px;
-  font-size: 13.5px;
-  line-height: 1.75;
-  color: var(--ink-soft);
+  margin-top: 6px;
+  font-size: 15px;
 }
 
 /* ---------- responsive ---------- */
 
+@media (max-width: 900px) {
+  .courses__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .courses__photo {
+    --leaf: 90px 0 90px 0;
+    max-width: 480px;
+  }
+}
+
 @media (max-width: 820px) {
+  .timetable {
+    display: none;
+  }
+
+  .daylist {
+    display: grid;
+  }
+}
+
+@media (max-width: 600px) {
   .courses__extras {
     grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  /* stacked, the two hairlines land right under the lead-in rule and read as
-     clutter — a single dot separates the options instead */
-  .extra {
-    padding-top: 0;
-    border-top: 0;
-  }
-
-  .extra + .extra {
-    position: relative;
-    padding-top: 48px;
-  }
-
-  .extra + .extra::before {
-    content: '';
-    position: absolute;
-    top: 21px;
-    left: 50%;
-    width: 7px;
-    height: 7px;
-    margin-left: -3.5px;
-    border-radius: 50%;
-    background: var(--accent);
   }
 }

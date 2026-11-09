@@ -1,16 +1,9 @@
+import studioPhoto from '../assets/galerie/04-in-sala.jpg'
 import './Courses.css'
 
-const WEEK = [
-  { short: 'L', name: 'Luni' },
-  { short: 'Ma', name: 'Marți' },
-  { short: 'Mi', name: 'Miercuri' },
-  { short: 'J', name: 'Joi' },
-  { short: 'V', name: 'Vineri' },
-  { short: 'S', name: 'Sâmbătă' },
-  { short: 'D', name: 'Duminică' },
-] as const
+const WEEK = ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică'] as const
 
-type Day = (typeof WEEK)[number]['name']
+type Day = (typeof WEEK)[number]
 
 type Course = {
   age: string
@@ -46,12 +39,11 @@ const COURSES: Course[] = [
   },
 ]
 
-// "Luni, Miercuri & Vineri"
-function dayList(days: Day[]) {
-  return days.length > 1
-    ? `${days.slice(0, -1).join(', ')} & ${days[days.length - 1]}`
-    : days[0]
-}
+// the timetable's rows: every distinct start time, earliest first
+const TIMES = [...new Set(COURSES.map((c) => c.time))].sort()
+
+const at = (day: Day, time: string) =>
+  COURSES.filter((c) => c.time === time && c.days.includes(day))
 
 const EXTRAS = [
   {
@@ -64,67 +56,88 @@ const EXTRAS = [
   },
 ]
 
+function Slot({ course }: { course: Course }) {
+  return (
+    <div className="slot">
+      <span className="slot__age">{course.age} ani</span>
+      <span className="slot__time">{course.time}</span>
+      <span className="slot__name">{course.name}</span>
+    </div>
+  )
+}
+
 function Courses() {
   return (
     <section className="courses section section--alt" id="cursuri">
       <div className="section__inner">
-        <h2 className="section__title">Primii pași către marea scenă încep aici!</h2>
-        <p className="section__intro">
-          La Alice Tudurii Ballet Academy, transformăm pasiunea pentru dans
-          într-o disciplină plină de grație. Oferim un mediu profesionist și cald
-          unde pașii mici cresc în dansatori mari.
-        </p>
+        <div className="courses__intro reveal">
+          <div className="courses__text">
+            <h2 className="section__title section__title--left">
+              Primii pași către marea scenă încep aici!
+            </h2>
+            <p className="courses__lede">
+              La Alice Tudurii Ballet Academy, transformăm pasiunea pentru dans
+              într-o disciplină plină de grație. Oferim un mediu profesionist și
+              cald unde pașii mici cresc în dansatori mari.
+            </p>
+          </div>
 
-        <p className="courses__lead" id="program-grupe">
-          <span>Program pe grupe de vârstă</span>
-        </p>
-
-        <div className="schedule">
-          <table className="schedule__table" aria-labelledby="program-grupe">
-            <thead>
-              <tr>
-                <th scope="col">Vârstă</th>
-                <th scope="col">Curs</th>
-                <th scope="col">Zile</th>
-                <th scope="col">Ora</th>
-              </tr>
-            </thead>
-            <tbody>
-              {COURSES.map((c) => (
-                <tr key={c.age + c.time}>
-                  <th scope="row" className="schedule__ages">
-                    <span className="schedule__age">{c.age}</span>
-                    <span className="schedule__unit">ani</span>
-                  </th>
-                  <td className="schedule__name">{c.name}</td>
-                  <td className="schedule__days">
-                    <span className="sr-only">{dayList(c.days)}</span>
-                    <span className="week" aria-hidden="true">
-                      {WEEK.map((d) => (
-                        <span
-                          key={d.name}
-                          className={c.days.includes(d.name) ? 'week__day is-on' : 'week__day'}
-                        >
-                          {d.short}
-                        </span>
-                      ))}
-                    </span>
-                  </td>
-                  <td className="schedule__time">{c.time}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <figure className="courses__photo">
+            <img src={studioPhoto} alt="Elevă zâmbind la încălzire, în sala academiei" />
+          </figure>
         </div>
 
-        <p className="courses__lead">
-          <span>Opțiuni personalizate</span>
-        </p>
+        <h3 className="courses__heading" id="program-grupe">
+          Program pe grupe de vârstă
+        </h3>
+
+        {/* desktop: the week as a timetable, start times down the side */}
+        <div className="timetable reveal" role="table" aria-labelledby="program-grupe">
+          <div className="timetable__row timetable__row--head" role="row">
+            <span className="timetable__corner" role="columnheader">
+              <span className="sr-only">Ora</span>
+            </span>
+            {WEEK.map((day) => (
+              <span className="timetable__day" role="columnheader" key={day}>
+                {day}
+              </span>
+            ))}
+          </div>
+
+          {TIMES.map((time) => (
+            <div className="timetable__row" role="row" key={time}>
+              <span className="timetable__time" role="rowheader">
+                {time}
+              </span>
+              {WEEK.map((day) => (
+                <div className="timetable__cell" role="cell" key={day}>
+                  {at(day, time).map((c) => (
+                    <Slot course={c} key={c.age} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* phones: the same week as a list, only the days with classes */}
+        <ol className="daylist reveal" aria-label="Program pe zile">
+          {WEEK.filter((day) => COURSES.some((c) => c.days.includes(day))).map((day) => (
+            <li className="daylist__day" key={day}>
+              <h4>{day}</h4>
+              {TIMES.flatMap((time) => at(day, time)).map((c) => (
+                <Slot course={c} key={c.age} />
+              ))}
+            </li>
+          ))}
+        </ol>
+
+        <h3 className="courses__heading">Opțiuni personalizate</h3>
 
         <div className="courses__extras">
           {EXTRAS.map((e) => (
-            <article className="extra" key={e.name}>
-              <h3 className="extra__name">{e.name}</h3>
+            <article className="extra reveal" key={e.name}>
+              <h4 className="extra__name">{e.name}</h4>
               <p className="extra__desc">{e.desc}</p>
             </article>
           ))}

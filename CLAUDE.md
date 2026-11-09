@@ -32,71 +32,75 @@ and no source text exists, flag it rather than making it up.
 
 Copy is Romanian. Keep the warm, friendly tone of the academy's own posts.
 
+## Design direction
+
+On 2026-11-09 the user restyled the site after https://essenceacademy.ro/
+("take what's most beautiful from it and adapt it for ballet"): bright and
+airy, bold modern sans headings, soft rounded cards, a watercolour bloom in the
+hero. Content stayed exactly as it was — the redesign is visual only.
+
 ## Typography
 
-Three faces, each with a fixed job:
+Two faces:
 
-- `--serif` Cormorant Garamond — nav, brand, names, data rows
-- `--script` Great Vibes — the hero motto and every section title
-- `--sans` Inter — body copy and small UI text
+- `--sans` Poppins — everything: headings (600–700), body (300), UI
+- `--script` Great Vibes — accents only: the hero motto and "Ballet Academy"
+  under the name in the header and footer
 
-Section titles use `.section__title`: script, centred, `--accent-deep`. The
-serif alone read too cold and adult for a children's academy; the script matches
-the academy's own flyers. Intros use `.section__intro` and are centred too.
+Section titles use `.section__title`: bold sans, centred, with a short rose
+rule underneath (`::after`). `.section__title--left` aligns title and rule
+left, used where a title sits beside a photo. Intros use `.section__intro`.
 
 **No tiny tracked caps.** Don't style text as small, wide-letter-spaced
 uppercase (e.g. `font-size: 10px; letter-spacing: 0.26em; text-transform:
-uppercase`, as the old "PROGRAM PE GRUPE DE VÂRSTĂ" lead-in was). The user
-dislikes it. For small labels and lead-ins use `--serif` italic in normal case
-instead.
+uppercase`). The user dislikes it — the reference site's tracked-caps eyebrows
+and button labels were deliberately not copied. Small labels are normal-case
+sans, in `--muted` or `--accent-deep`.
 
 **Verify Romanian diacritics (ș ț î ă â) before adopting any new font.** Several
 otherwise-good faces lack ș/ț and fall back silently mid-word — Parisienne and
-Marcellus both fail. Probe in the browser before committing to one.
-
-`font-variant-numeric: lining-nums` is set at `:root` because Cormorant defaults
-to oldstyle figures, which look uneven in ages, times and phone numbers.
+Marcellus both fail. Poppins and Great Vibes pass. Probe in the browser before
+committing to one.
 
 ## Layout
 
-Full-bleed background; content is held together by `--stage` (max-width) and
-`--gutter`, never by a visible frame or card around the page.
+Full-bleed section backgrounds; content is held to `--stage` (max-width) by
+`--gutter`. Sections are `<section class="section">` (full-bleed, carries the
+background) wrapping `<div class="section__inner">`. Backgrounds go white
+(`--bg`) / blush (`--bg-alt`, `.section--alt`) down the page, with one dark
+`--velvet` band (`.section--velvet`) on the results section, plus the footer.
+Keep it to that one band.
 
-**Nothing is boxed.** Structure comes from hairline rules (`--line`) and
-whitespace; a bordered card around text or around the page itself immediately
-looks foreign.
+Every section uses `padding-block: var(--section-y)`.
 
-The schedule table in the courses section has no frame (the user found its
-lines unattractive). It sits on a soft patch of `--bg` that reaches only a short
-way past the table and fades into the blush band on every side. Keep it
-subtle: a brighter near-white surface was rejected as too stark, and a band
-spanning the full screen width was rejected as ugly. Don't put a frame back.
+**Palette:** white, blush, and rose/velvet. `--accent` (rose) and
+`--accent-deep` for marks, numerals and highlights; `--tint` (pale rose) for
+pills, the timetable header row and icon discs. The hero watercolour also
+uses lilac and peach, but only inside the bloom. Don't add new hues elsewhere.
 
-The gallery is a single-row carousel with no title — a multi-row collage made
-the page feel crowded and forced scrolling through photos, and its heading
-added nothing.
+**Shapes:** soft rounded cards (`--radius`) with a rose-tinted shadow
+(`rgba(var(--shadow), …)`), never hard borders. Feature photos use the "leaf"
+corner (`--leaf`: two opposite corners rounded, two square). The one button
+style is `.button`, a rose gradient pill with a soft glow.
 
-Sections are `<section class="section">` (full-bleed, carries the background)
-wrapping `<div class="section__inner">` (capped at `--stage`). Backgrounds
-alternate `--bg` / `--bg-alt` down the page via `.section--alt`, so the page
-reads as distinct bands instead of one flat sheet.
+**Header** (`Header.tsx`) is sticky: transparent over the hero, white blur once
+scrolled. Contact is the pill on the right rather than an inline link. Phones
+get a burger and a full-screen menu.
 
-The two light tones alone were too monotonous, so one deep accent band breaks
-the rhythm: `--velvet` (a theatre-curtain burgundy) via `.section--velvet`,
-with `--on-velvet` text and `--gold` titles and highlights. It is used only on
-the results section ("pe scene mari", the stage moment) and the footer. Keep
-it rare — a third velvet band would make the page heavy.
+**Hero:** name + motto + button on the left; on the right an SVG watercolour
+bloom (feTurbulence displacement, edge-darkened) with the two transparent-PNG
+cutouts from `src/assets/cutouts/` layered over it at different scales, each
+with its own drop shadow.
 
-**Three colours only: off-white (`--bg`), blush (`--bg-alt`) and velvet.**
-Every ink, hairline, accent and shadow is derived from the velvet: no browns,
-no gold, no new hues. If something needs emphasis, use `--accent-deep` (a
-lighter velvet) on light ground or `--on-velvet-accent` (lifted blush) on
-velvet.
+**Courses:** the schedule is a weekly timetable (days across, start times
+down) of white tiles on the blush band, classes as age pills. No ruled lines.
+Phones get a list by day instead.
 
-Every section uses `padding-block: var(--section-y)` so stacked paddings cannot
-add up to a dead gap between sections. Wide data rows (courses, results) are
-capped at ~1080px even though the stage is wider — otherwise the value on the
-right drifts too far from the label on the left to read as one row.
+**Results:** one pale-rose card per placement on the velvet band.
 
-Hero depth comes from layered transparent-PNG cutouts at different scales in
-`src/assets/cutouts/`, each with its own drop shadow.
+**Gallery:** a single-row carousel of rounded portrait photos, alternate ones
+staggered lower, no title. A multi-row collage made the page feel crowded and
+its heading added nothing.
+
+Scroll-in motion uses `.reveal` (CSS scroll-driven animation, so elements
+below the fold start hidden; disable it when taking full-page screenshots).

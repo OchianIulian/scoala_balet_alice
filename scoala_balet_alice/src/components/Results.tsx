@@ -1,22 +1,17 @@
 import './Results.css'
 
-type Result = {
+type Placement = {
+  rank: string
+  style: string
   event: string
   place: string
-  placements: string[]
 }
 
-const RESULTS: Result[] = [
-  {
-    event: 'Dance World Cup',
-    place: 'Dublin',
-    placements: ['Locul 8 mondial — balet', 'Locul 13 mondial — dans contemporan'],
-  },
-  {
-    event: 'Grand Jeté Dance Awards',
-    place: 'Portugalia',
-    placements: ['Locul 1 — balet', 'Locul 4 — dans contemporan'],
-  },
+const PLACEMENTS: Placement[] = [
+  { rank: 'Locul 8 mondial', style: 'Balet', event: 'Dance World Cup', place: 'Dublin' },
+  { rank: 'Locul 13 mondial', style: 'Dans contemporan', event: 'Dance World Cup', place: 'Dublin' },
+  { rank: 'Locul 1', style: 'Balet', event: 'Grand Jeté Dance Awards', place: 'Portugalia' },
+  { rank: 'Locul 4', style: 'Dans contemporan', event: 'Grand Jeté Dance Awards', place: 'Portugalia' },
 ]
 
 function Results() {
@@ -30,18 +25,13 @@ function Results() {
         </p>
 
         <ul className="results__list">
-          {RESULTS.map((r) => (
-            <li className="result" key={r.event}>
-              <div className="result__event">
-                <h3>{r.event}</h3>
-                <p>{r.place}</p>
-              </div>
-
-              <ul className="result__places">
-                {r.placements.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ul>
+          {PLACEMENTS.map((p) => (
+            <li className="result reveal" key={p.rank + p.style}>
+              <p className="result__rank">{p.rank}</p>
+              <p className="result__style">{p.style}</p>
+              <p className="result__event">
+                {p.event} · {p.place}
+              </p>
             </li>
           ))}
         </ul>
