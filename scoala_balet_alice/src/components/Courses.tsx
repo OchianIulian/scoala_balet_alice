@@ -85,14 +85,21 @@ function Courses() {
                 </figure>
               )}
 
-              <div className="courses__extras">
-                {OFFERINGS.map((o) => (
-                  <article className="extra reveal" key={o.name}>
-                    <h4 className="extra__name">{o.name}</h4>
-                    {o.desc && <p className="extra__desc">{o.desc}</p>}
-                  </article>
+              {/* a rose numeral leads each course, so the ones with only a
+                  name still read as a full row */}
+              <ol className="offerings__list">
+                {OFFERINGS.map((o, i) => (
+                  <li className="offering reveal" key={o.name}>
+                    <span className="offering__num" aria-hidden="true">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div>
+                      <h4 className="offering__name">{o.name}</h4>
+                      {o.desc && <p className="offering__desc">{o.desc}</p>}
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
           </div>
         </div>
