@@ -47,7 +47,8 @@ function Courses() {
       </div>
 
       {/* with a studio clip, the course cards sit on a full-bleed band with
-          the clip running behind a velvet wash */}
+          the clip running behind a velvet wash, and a sharp copy of it
+          standing beside them */}
       {OFFERINGS.length > 0 && (
         <div className={school.courses.video ? 'offerings offerings--band' : 'offerings'}>
           {school.courses.video && (
@@ -67,13 +68,31 @@ function Courses() {
           <div className="section__inner">
             <h3 className="courses__heading">{school.courses.offeringsHeading}</h3>
 
-            <div className="courses__extras">
-              {OFFERINGS.map((o) => (
-                <article className="extra reveal" key={o.name}>
-                  <h4 className="extra__name">{o.name}</h4>
-                  {o.desc && <p className="extra__desc">{o.desc}</p>}
-                </article>
-              ))}
+            <div className="offerings__body">
+              {school.courses.video && (
+                <figure className="offerings__video reveal">
+                  <video
+                    src={img(school.courses.video)}
+                    poster={img(school.courses.photo)}
+                    aria-label={school.courses.photoAlt}
+                    autoPlay={!REDUCED_MOTION}
+                    controls={REDUCED_MOTION}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                  />
+                </figure>
+              )}
+
+              <div className="courses__extras">
+                {OFFERINGS.map((o) => (
+                  <article className="extra reveal" key={o.name}>
+                    <h4 className="extra__name">{o.name}</h4>
+                    {o.desc && <p className="extra__desc">{o.desc}</p>}
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </div>
