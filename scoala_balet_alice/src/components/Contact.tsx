@@ -29,6 +29,15 @@ function InstagramIcon() {
   )
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.4-4.2a8.5 8.5 0 1 1 15.6-4.6Z" />
+      <path d="M9.2 8.3c.3-.4.9-.4 1.1 0l.7 1.5c.1.3 0 .6-.2.8l-.5.5c.6 1.2 1.5 2.1 2.7 2.7l.5-.5c.2-.2.5-.3.8-.2l1.5.7c.4.2.4.8 0 1.1-.8.7-1.9.9-2.9.4a8.4 8.4 0 0 1-4.1-4.1c-.5-1-.3-2.1.4-2.9Z" />
+    </svg>
+  )
+}
+
 function Contact() {
   const { school } = useSchool()
   const { contact } = school
@@ -37,7 +46,7 @@ function Contact() {
       <div className="section__inner">
         <h2 className="section__title">Vă așteptăm în sală</h2>
         <p className="section__intro">
-          Sunați sau scrieți-ne pe Instagram și stabilim împreună o primă ședință.
+          {contact.intro ?? 'Sunați sau scrieți-ne pe Instagram și stabilim împreună o primă ședință.'}
         </p>
 
         <ul className="contact__list">
@@ -70,6 +79,18 @@ function Contact() {
             </a>
           </li>
 
+          {contact.whatsapp && (
+            <li className="contact__item reveal">
+              <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noreferrer">
+                <span className="contact__icon">
+                  <WhatsAppIcon />
+                </span>
+                <span className="contact__label">WhatsApp</span>
+                <span className="contact__value">Trimite-ne un mesaj</span>
+              </a>
+            </li>
+          )}
+
           <li className="contact__item reveal">
             <a
               href={`https://www.instagram.com/${contact.instagram}/`}
@@ -80,7 +101,20 @@ function Contact() {
                 <InstagramIcon />
               </span>
               <span className="contact__label">Instagram</span>
-              <span className="contact__value">@{contact.instagram}</span>
+              {/* long handles break at their dots rather than overflow the card */}
+              <span className="contact__value">
+                @
+                {contact.instagram.split('.').map((part, i) => (
+                  <Fragment key={i}>
+                    {i > 0 && (
+                      <>
+                        .<wbr />
+                      </>
+                    )}
+                    {part}
+                  </Fragment>
+                ))}
+              </span>
             </a>
           </li>
         </ul>

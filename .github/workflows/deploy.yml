@@ -39,6 +39,8 @@ jobs:
         env:
           # Pages serves a project site from /<repo>/; assets need that prefix
           VITE_BASE: /${{ github.event.repository.name }}/
+          # link previews need absolute URLs for the share image and page
+          SITE_URL: https://${{ github.repository_owner }}.github.io
 
       - uses: actions/configure-pages@v5
 

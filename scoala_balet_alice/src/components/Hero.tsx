@@ -73,8 +73,13 @@ function Swash({ ref }: { ref: React.Ref<SVGSVGElement> }) {
   )
 }
 
+// schools without a button of their own send visitors down to the contact cards
+const DEFAULT_CTA = { label: 'Programează o primă ședință', href: '#contact' }
+
 function Hero() {
   const { school, img } = useSchool()
+  const cta = school.hero.cta ?? DEFAULT_CTA
+  const external = /^https?:/.test(cta.href)
   const nameText = useRef<HTMLSpanElement>(null)
   const swash = useRef<SVGSVGElement>(null)
 
@@ -119,8 +124,12 @@ function Hero() {
 
           <p className="hero__motto">{school.hero.motto}</p>
 
-          <a className="button" href="#contact">
-            Programează o primă ședință
+          <a
+            className="button"
+            href={cta.href}
+            {...(external && { target: '_blank', rel: 'noreferrer' })}
+          >
+            {cta.label}
             <svg viewBox="0 0 20 10" aria-hidden="true">
               <path d="M0 5h18M14 1l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" />
             </svg>
