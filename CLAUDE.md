@@ -2,6 +2,19 @@
 
 React 19 + TypeScript + Vite. Source lives in `scoala_balet_alice/`.
 
+## Multi-school setup
+
+One codebase serves several schools. The URL ends with the school's slug
+(`/alice-academy`; on GitHub Pages `/<repo>/alice-academy`). Each school is a
+folder `src/schools/<slug>/` holding `school.json` (all copy, contacts, image
+paths — shape in `src/schools/types.ts`) and its images; paths in the JSON are
+relative to that folder. Components read it through `useSchool()`
+(`{ school, img }`). `results` and `gallery` are optional and drop out with
+their nav links. Unknown slug → bare "not found" page, deliberately not a
+list of schools. `npm run build` copies `index.html` to `404.html` so deep
+links work on GitHub Pages. To add a school: new folder + `school.json`.
+Layout, palette and typography are shared, not per school.
+
 ## Content rules
 
 **No eyebrow/kicker labels above headings.** Do not add small tracked-caps labels

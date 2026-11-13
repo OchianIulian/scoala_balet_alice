@@ -1,41 +1,19 @@
-import alicePhoto from '../assets/teachers/alice.jpg'
-import maraPhoto from '../assets/teachers/mara.jpg'
+import { useSchool } from '../schools/SchoolContext'
 import './Teachers.css'
 
-type Teacher = {
-  name: string
-  role: string
-  note: string
-  photo?: string
-}
-
-const TEACHERS: Teacher[] = [
-  {
-    name: 'Alice-Diana Tudurii',
-    role: 'Fondatoare · profesor coordonator',
-    note: 'S-a format ca balerină la Universitatea Națională de Arte „George Enescu” din Iași și a dansat pe scena Ateneului, dar și în gala proiectului național „Sub cupola artei instrumentale și vocale”. Astăzi le deschide celor mici drumul spre baletul clasic și coordonează programul academiei.',
-    photo: alicePhoto,
-  },
-  {
-    name: 'Mara Boană',
-    role: 'Profesor · balerină',
-    note: 'Balerină la Opera Națională Română Iași, formată la Kyiv Choreographic College, Ballettakademie München și UNAGE Iași. Predă dans contemporan și grupa de duminică.',
-    photo: maraPhoto,
-  },
-]
-
 function Teachers() {
+  const { school, img } = useSchool()
   return (
     <section className="teachers section" id="profesori">
       <div className="section__inner">
         <h2 className="section__title">Cine îi îndrumă pe cei mici</h2>
 
         <ul className="teachers__list">
-          {TEACHERS.map((t) => (
+          {school.teachers.map((t) => (
             <li className="teacher reveal" key={t.name}>
               {t.photo && (
                 <figure className="teacher__photo">
-                  <img src={t.photo} alt={t.name} loading="lazy" />
+                  <img src={img(t.photo)} alt={t.name} loading="lazy" />
                 </figure>
               )}
 

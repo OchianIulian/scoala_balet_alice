@@ -1,32 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { useSchool } from '../schools/SchoolContext'
 import './Gallery.css'
-
-// alt text per file in assets/galerie/; anything without an entry falls back
-// to a generic description
-const ALT: Record<string, string> = {
-  '01-salt.jpg': 'Elevă în salt pe scenă',
-  '02-arabesque-tutu-alb.jpg': 'Elevă în arabesque, în tutu alb',
-  '03-extensie-pe-scena.jpg': 'Elevă în extensie, așezată pe scenă',
-  '04-in-sala.jpg': 'Elevă zâmbind la încălzire, în sala academiei',
-  '05-doua-balerine.jpg': 'Două eleve în tutu alb pe scenă',
-  '06-arabesque-roz.jpg': 'Elevă în arabesque, în costum roz',
-  '07-arabesque-rosu.jpg': 'Elevă în arabesque, în costum roșu',
-  '08-contemporan.jpg': 'Elevă într-un moment de dans contemporan',
-  '09-arabesque-voal.jpg': 'Elevă în arabesque, în rochie albă de voal',
-}
-
-// every image dropped into assets/galerie/ joins the carousel, in filename order
-const PHOTOS = Object.entries(
-  import.meta.glob<string>('../assets/galerie/*.{jpg,jpeg,png,webp}', {
-    eager: true,
-    import: 'default',
-  }),
-)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([path, src]) => ({
-    src,
-    alt: ALT[path.split('/').pop()!] ?? 'Elevă a academiei dansând',
-  }))
 
 function Arrow({ flip }: { flip?: boolean }) {
   return (
@@ -37,6 +11,8 @@ function Arrow({ flip }: { flip?: boolean }) {
 }
 
 function Gallery() {
+  const { school, img } = useSchool()
+  const PHOTOS = school.gallery ?? []
   const track = useRef<HTMLUListElement>(null)
   const [atStart, setAtStart] = useState(true)
   const [atEnd, setAtEnd] = useState(false)
@@ -65,7 +41,7 @@ function Gallery() {
       <ul className="gallery__track" ref={track} onScroll={update}>
         {PHOTOS.map(({ src, alt }) => (
           <li className="gallery__item" key={src}>
-            <img src={src} alt={alt} loading="lazy" />
+            <img src={img(src)} alt={alt} loading="lazy" />
           </li>
         ))}
       </ul>

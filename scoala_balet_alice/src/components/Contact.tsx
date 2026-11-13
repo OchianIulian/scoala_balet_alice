@@ -1,7 +1,6 @@
+import { Fragment } from 'react'
+import { useSchool } from '../schools/SchoolContext'
 import './Contact.css'
-
-const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Strada+Bradului+5+Nicolina+Ia%C8%99i'
 
 function PinIcon() {
   return (
@@ -31,6 +30,8 @@ function InstagramIcon() {
 }
 
 function Contact() {
+  const { school } = useSchool()
+  const { contact } = school
   return (
     <section className="contact section section--alt" id="contact">
       <div className="section__inner">
@@ -41,34 +42,37 @@ function Contact() {
 
         <ul className="contact__list">
           <li className="contact__item reveal">
-            <a href={MAPS_URL} target="_blank" rel="noreferrer">
+            <a href={contact.mapsUrl} target="_blank" rel="noreferrer">
               <span className="contact__icon">
                 <PinIcon />
               </span>
               <span className="contact__label">Adresă</span>
               <span className="contact__value">
-                Strada Bradului nr. 5
-                <br />
-                Nicolina, Iași
+                {contact.addressLines.map((line, i) => (
+                  <Fragment key={line}>
+                    {i > 0 && <br />}
+                    {line}
+                  </Fragment>
+                ))}
               </span>
             </a>
           </li>
 
           <li className="contact__item reveal">
-            <a href="tel:+40753611711">
+            <a href={contact.phoneHref}>
               <span className="contact__icon">
                 <PhoneIcon />
               </span>
               <span className="contact__label">Telefon</span>
               <span className="contact__value contact__value--strong">
-                0753 611 711
+                {contact.phone}
               </span>
             </a>
           </li>
 
           <li className="contact__item reveal">
             <a
-              href="https://www.instagram.com/tuduriialiceballet/"
+              href={`https://www.instagram.com/${contact.instagram}/`}
               target="_blank"
               rel="noreferrer"
             >
@@ -76,7 +80,7 @@ function Contact() {
                 <InstagramIcon />
               </span>
               <span className="contact__label">Instagram</span>
-              <span className="contact__value">@tuduriialiceballet</span>
+              <span className="contact__value">@{contact.instagram}</span>
             </a>
           </li>
         </ul>

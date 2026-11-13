@@ -1,60 +1,10 @@
-import studioPhoto from '../assets/galerie/04-in-sala.jpg'
+import { useSchool } from '../schools/SchoolContext'
+import type { Day } from '../schools/types'
 import './Courses.css'
 
-const WEEK = ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică'] as const
+const WEEK: Day[] = ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică']
 
-type Day = (typeof WEEK)[number]
-
-type Course = {
-  age: string
-  name: string
-  days: Day[]
-  time: string
-}
-
-const COURSES: Course[] = [
-  {
-    age: '3–4',
-    name: 'Introducere magică în lumea baletului',
-    days: ['Marți', 'Joi'],
-    time: '17:00',
-  },
-  {
-    age: '3–5',
-    name: 'Primii pași de balet',
-    days: ['Duminică'],
-    time: '10:00',
-  },
-  {
-    age: '5–7',
-    name: 'Dezvoltarea posturii și a coordonării',
-    days: ['Marți', 'Joi'],
-    time: '18:00',
-  },
-  {
-    age: '7–10',
-    name: 'Perfecționarea tehnicii și a expresivității',
-    days: ['Luni', 'Miercuri', 'Vineri'],
-    time: '17:00',
-  },
-]
-
-// the timetable's rows: every distinct start time, earliest first
-const TIMES = [...new Set(COURSES.map((c) => c.time))].sort()
-
-const at = (day: Day, time: string) =>
-  COURSES.filter((c) => c.time === time && c.days.includes(day))
-
-const EXTRAS = [
-  {
-    name: 'Ședințe individuale 1:1',
-    desc: 'Pentru progres accelerat.',
-  },
-  {
-    name: 'Program flexibil în weekend',
-    desc: 'Adaptat nevoilor familiei tale.',
-  },
-]
+type Course = { age: string; name: string; days: Day[]; time: string }
 
 function Slot({ course }: { course: Course }) {
   return (
@@ -67,6 +17,15 @@ function Slot({ course }: { course: Course }) {
 }
 
 function Courses() {
+  const { school, img } = useSchool()
+  const { groups: COURSES, extras: EXTRAS } = school.courses
+
+  // the timetable's rows: every distinct start time, earliest first
+  const TIMES = [...new Set(COURSES.map((c) => c.time))].sort()
+
+  const at = (day: Day, time: string) =>
+    COURSES.filter((c) => c.time === time && c.days.includes(day))
+
   return (
     <section className="courses section section--alt" id="cursuri">
       <div className="section__inner">
@@ -76,14 +35,12 @@ function Courses() {
               Primii pași către marea scenă încep aici!
             </h2>
             <p className="courses__lede">
-              La Alice Tudurii Ballet Academy, transformăm pasiunea pentru dans
-              într-o disciplină plină de grație. Oferim un mediu profesionist și
-              cald unde pașii mici cresc în dansatori mari.
+              {school.courses.lede}
             </p>
           </div>
 
           <figure className="courses__photo">
-            <img src={studioPhoto} alt="Elevă zâmbind la încălzire, în sala academiei" />
+            <img src={img(school.courses.photo)} alt={school.courses.photoAlt} />
           </figure>
         </div>
 

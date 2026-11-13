@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Alice Tudurii Ballet Academy — Balet pentru copii, Iași",
+    "description": "Alice Tudurii Ballet Academy — cursuri de balet și dans contemporan pentru copii în Iași, Nicolina. Unde pașii mici cresc în dansatori mari."
+  },
+  "brand": {
+    "name": "Alice Tudurii",
+    "kind": "Ballet Academy"
+  },
+  "hero": {
+    "motto": "Unde pașii mici cresc în dansatori mari",
+    "image": "cutouts/arabesque.png",
+    "imageAlt": "Dansatoare într-un salt de dans contemporan"
+  },
+  "courses": {
+    "lede": "La Alice Tudurii Ballet Academy, transformăm pasiunea pentru dans într-o disciplină plină de grație. Oferim un mediu profesionist și cald unde pașii mici cresc în dansatori mari.",
+    "photo": "galerie/04-in-sala.jpg",
+    "photoAlt": "Elevă zâmbind la încălzire, în sala academiei",
+    "groups": [
+      {
+        "age": "3–4",
+        "name": "Introducere magică în lumea baletului",
+        "days": ["Marți", "Joi"],
+        "time": "17:00"
+      },
+      {
+        "age": "3–5",
+        "name": "Primii pași de balet",
+        "days": ["Duminică"],
+        "time": "10:00"
+      },
+      {
+        "age": "5–7",
+        "name": "Dezvoltarea posturii și a coordonării",
+        "days": ["Marți", "Joi"],
+        "time": "18:00"
+      },
+      {
+        "age": "7–10",
+        "name": "Perfecționarea tehnicii și a expresivității",
+        "days": ["Luni", "Miercuri", "Vineri"],
+        "time": "17:00"
+      }
+    ],
+    "extras": [
+      { "name": "Ședințe individuale 1:1", "desc": "Pentru progres accelerat." },
+      { "name": "Program flexibil în weekend", "desc": "Adaptat nevoilor familiei tale." }
+    ]
+  },
+  "teachers": [
+    {
+      "name": "Alice-Diana Tudurii",
+      "role": "Fondatoare · profesor coordonator",
+      "note": "S-a format ca balerină la Universitatea Națională de Arte „George Enescu” din Iași și a dansat pe scena Ateneului, dar și în gala proiectului național „Sub cupola artei instrumentale și vocale”. Astăzi le deschide celor mici drumul spre baletul clasic și coordonează programul academiei.",
+      "photo": "teachers/alice.jpg"
+    },
+    {
+      "name": "Mara Boană",
+      "role": "Profesor · balerină",
+      "note": "Balerină la Opera Națională Română Iași, formată la Kyiv Choreographic College, Ballettakademie München și UNAGE Iași. Predă dans contemporan și grupa de duminică.",
+      "photo": "teachers/mara.jpg"
+    }
+  ],
+  "results": {
+    "intro": "În 2026, o elevă a academiei a ajuns, la 8 ani, în finala mondială de la Dublin și pe podium în Portugalia.",
+    "placements": [
+      { "rank": "Locul 8 mondial", "style": "Balet", "event": "Dance World Cup", "place": "Dublin" },
+      { "rank": "Locul 13 mondial", "style": "Dans contemporan", "event": "Dance World Cup", "place": "Dublin" },
+      { "rank": "Locul 1", "style": "Balet", "event": "Grand Jeté Dance Awards", "place": "Portugalia" },
+      { "rank": "Locul 4", "style": "Dans contemporan", "event": "Grand Jeté Dance Awards", "place": "Portugalia" }
+    ]
+  },
+  "gallery": [
+    { "src": "galerie/01-salt.jpg", "alt": "Elevă în salt pe scenă" },
+    { "src": "galerie/02-arabesque-tutu-alb.jpg", "alt": "Elevă în arabesque, în tutu alb" },
+    { "src": "galerie/03-extensie-pe-scena.jpg", "alt": "Elevă în extensie, așezată pe scenă" },
+    { "src": "galerie/04-in-sala.jpg", "alt": "Elevă zâmbind la încălzire, în sala academiei" },
+    { "src": "galerie/05-doua-balerine.jpg", "alt": "Două eleve în tutu alb pe scenă" },
+    { "src": "galerie/06-arabesque-roz.jpg", "alt": "Elevă în arabesque, în costum roz" },
+    { "src": "galerie/07-arabesque-rosu.jpg", "alt": "Elevă în arabesque, în costum roșu" },
+    { "src": "galerie/08-contemporan.jpg", "alt": "Elevă într-un moment de dans contemporan" },
+    { "src": "galerie/09-arabesque-voal.jpg", "alt": "Elevă în arabesque, în rochie albă de voal" }
+  ],
+  "contact": {
+    "addressLines": ["Strada Bradului nr. 5", "Nicolina, Iași"],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Strada+Bradului+5+Nicolina+Ia%C8%99i",
+    "phone": "0753 611 711",
+    "phoneHref": "tel:+40753611711",
+    "instagram": "tuduriialiceballet"
+  }
+}

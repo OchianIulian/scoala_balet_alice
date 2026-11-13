@@ -1,11 +1,13 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import { NAV } from '../nav'
+import { navFor } from '../nav'
+import { useSchool } from '../schools/SchoolContext'
 import './Header.css'
 
-// Contact is the pill on the right, so the inline links leave it out
-const LINKS = NAV.filter((item) => item.href !== '#contact')
-
 function Header() {
+  const { school } = useSchool()
+  const NAV = navFor(school)
+  // Contact is the pill on the right, so the inline links leave it out
+  const LINKS = NAV.filter((item) => item.href !== '#contact')
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -33,8 +35,8 @@ function Header() {
     <header className={scrolled ? 'header is-scrolled' : 'header'}>
       <div className="header__inner">
         <a className="header__brand" href="#acasa">
-          <span className="header__name">Alice Tudurii</span>
-          <span className="header__kind">Ballet Academy</span>
+          <span className="header__name">{school.brand.name}</span>
+          <span className="header__kind">{school.brand.kind}</span>
         </a>
 
         <nav className="header__links" aria-label="Navigare principală">

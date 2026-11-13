@@ -1,4 +1,4 @@
-import arabesque from '../assets/cutouts/arabesque.png'
+import { useSchool } from '../schools/SchoolContext'
 import './Hero.css'
 
 // a rose-and-lilac watercolour bloom behind the dancer. Translucent washes
@@ -73,6 +73,7 @@ function Swash() {
 }
 
 function Hero() {
+  const { school, img } = useSchool()
   return (
     <section className="hero" id="acasa">
       {/* soft floating blobs in the corners, as on the reference */}
@@ -84,13 +85,13 @@ function Hero() {
         <div className="hero__copy">
           <h1 className="hero__title">
             <span className="hero__name">
-              Alice Tudurii
+              {school.brand.name}
               <Swash />
             </span>
-            <span className="hero__kind">Ballet Academy</span>
+            <span className="hero__kind">{school.brand.kind}</span>
           </h1>
 
-          <p className="hero__motto">Unde pașii mici cresc în dansatori mari</p>
+          <p className="hero__motto">{school.hero.motto}</p>
 
           <a className="button" href="#contact">
             Programează o primă ședință
@@ -104,7 +105,7 @@ function Hero() {
           <Splash />
 
           <figure className="hero__fig hero__fig--front">
-            <img src={arabesque} alt="Dansatoare într-un salt de dans contemporan" />
+            <img src={img(school.hero.image)} alt={school.hero.imageAlt} />
           </figure>
         </div>
       </div>
