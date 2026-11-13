@@ -11,7 +11,7 @@ const SCHOOLS: Record<string, School> = Object.fromEntries(
   Object.entries(configs).map(([path, school]) => [path.split('/')[1], school]),
 )
 
-const images = import.meta.glob<string>('./*/**/*.{jpg,jpeg,png,webp,svg}', {
+const images = import.meta.glob<string>('./*/**/*.{jpg,jpeg,png,webp,svg,mp4}', {
   eager: true,
   query: '?url',
   import: 'default',

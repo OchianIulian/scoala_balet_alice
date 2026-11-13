@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from 'react'
 import { useSchool } from '../schools/SchoolContext'
 import './Hero.css'
 
@@ -49,9 +50,9 @@ function Splash() {
 
 // a rose brushstroke under the name, like a marker swipe: a tapered band
 // whose edges are roughened by noise, lighter where the brush runs dry
-function Swash() {
+function Swash({ ref }: { ref: React.Ref<SVGSVGElement> }) {
   return (
-    <svg className="hero__swash" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+    <svg ref={ref} className="hero__swash" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <filter id="swash-edge" x="-5%" y="-40%" width="110%" height="180%">
           <feTurbulence type="fractalNoise" baseFrequency="0.035 0.25" numOctaves="3" seed="2" />
@@ -74,6 +75,31 @@ function Swash() {
 
 function Hero() {
   const { school, img } = useSchool()
+  const nameText = useRef<HTMLSpanElement>(null)
+  const swash = useRef<SVGSVGElement>(null)
+
+  // a long name wraps onto two lines; the brushstroke belongs under the last
+  // one only, so size it to that line instead of the whole name block
+  useLayoutEffect(() => {
+    const text = nameText.current
+    const stroke = swash.current
+    const box = stroke?.parentElement
+    if (!text || !stroke || !box) return
+
+    const fit = () => {
+      const lines = text.getClientRects()
+      const last = lines[lines.length - 1]
+      const boxLeft = box.getBoundingClientRect().left
+      if (!last) return
+      stroke.style.left = `${last.left - boxLeft - last.width * 0.03}px`
+      stroke.style.width = `${last.width * 1.06}px`
+    }
+    fit()
+    const observer = new ResizeObserver(fit)
+    observer.observe(box)
+    document.fonts.ready.then(fit)
+    return () => observer.disconnect()
+  }, [school.brand.name])
   return (
     <section className="hero" id="acasa">
       {/* soft floating blobs in the corners, as on the reference */}
@@ -85,8 +111,8 @@ function Hero() {
         <div className="hero__copy">
           <h1 className="hero__title">
             <span className="hero__name">
-              {school.brand.name}
-              <Swash />
+              <span ref={nameText}>{school.brand.name}</span>
+              <Swash ref={swash} />
             </span>
             <span className="hero__kind">{school.brand.kind}</span>
           </h1>

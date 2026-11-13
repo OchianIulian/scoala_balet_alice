@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "title": "Oana Floriea Ballet School — Balet pentru copii, Iași",
+    "description": "Oana Floriea Ballet School — cursuri de dans clasic, contemporan și de caracter pentru copii între 3 și 14 ani, în Palas Mall Iași."
+  },
+  "brand": {
+    "name": "Oana Floriea",
+    "kind": "Ballet School"
+  },
+  "hero": {
+    "motto": "Descoperim, dezvoltăm și promovăm potențialul fiecărui copil!",
+    "image": "cutouts/arabesque-turcoaz.png",
+    "imageAlt": "Balerină în arabesque, în costum turcoaz"
+  },
+  "courses": {
+    "title": "Descoperim potențialul fiecărui copil",
+    "lede": "Cursuri de dans clasic, contemporan și de caracter pentru copii cu vârste între 3 și 14 ani. Sala de cursuri se află în incinta Palas Mall.",
+    "photo": "galerie/04-in-sala.jpg",
+    "photoAlt": "Eleve exersând la bară, în sala școlii",
+    "video": "video/in-sala.mp4",
+    "offeringsHeading": "Cursuri",
+    "times": ["10:00"],
+    "offerings": [
+      {
+        "name": "Balet și gimnastică",
+        "desc": "De la 3 ani. Dezvoltăm postura și grația, flexibilitatea și coordonarea, încrederea în sine și disciplina prin mișcare și dans."
+      },
+      { "name": "Dans contemporan" },
+      { "name": "Dans de caracter" },
+      {
+        "name": "Open",
+        "desc": "Indiferent de nivel, vei găsi grupa potrivită."
+      }
+    ]
+  },
+  "teachers": [
+    {
+      "name": "Oana Floriea",
+      "role": "Fondatoare · profesor",
+      "note": "Își însoțește elevele de la primii pași, începând de la 3 ani, până pe scena concursurilor, precum „Lebăda de Cristal”.",
+      "photo": "teachers/oana.jpg"
+    }
+  ],
+  "gallery": [
+    { "src": "galerie/01-salt.jpg", "alt": "Elevă în salt pe scenă" },
+    { "src": "galerie/02-split-roz.jpg", "alt": "Elevă în costum roz, în extensie pe scenă" },
+    { "src": "galerie/10-crown.jpg", "alt": "Eleve în coregrafia „Crown”, la concursul „Lebăda de Cristal”" },
+    { "src": "galerie/03-tutu-albastru.jpg", "alt": "Elevă în tutu albastru, pe scenă" },
+    { "src": "galerie/04-in-sala.jpg", "alt": "Eleve exersând la bară, în sala școlii" },
+    { "src": "galerie/11-crown-piramida.jpg", "alt": "Piramidă din coregrafia „Crown”, pe scena „Lebăda de Cristal”" },
+    { "src": "galerie/05-gemene.jpg", "alt": "Două fetițe în body roz, la ore" },
+    { "src": "galerie/06-arabesque-turcoaz.jpg", "alt": "Elevă în arabesque, în costum turcoaz" },
+    { "src": "galerie/12-crown-ridicare.jpg", "alt": "Elevă ridicată de colege în coregrafia „Crown”" },
+    { "src": "galerie/07-tutu-lila.jpg", "alt": "Eleve în tutu lila, pe scenă" },
+    { "src": "galerie/08-grupa-rosu.jpg", "alt": "Grup de eleve în costume albe și roșii, pe scenă" },
+    { "src": "galerie/13-crown-zid.jpg", "alt": "Elevă sprijinită de un zid de scenă, în coregrafia „Crown”" },
+    { "src": "galerie/09-arabesque-rosu.jpg", "alt": "Elevă în arabesque, în tutu roșu" }
+  ],
+  "contact": {
+    "addressLines": ["Palas Mall", "Iași"],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Palas+Mall+Ia%C8%99i",
+    "phone": "0756 318 284",
+    "phoneHref": "tel:+40756318284",
+    "instagram": "oana.floriea.ballet.school"
+  }
+}

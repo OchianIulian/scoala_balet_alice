@@ -9,13 +9,22 @@ export type School = {
   brand: { name: string; kind: string }
   hero: { motto: string; image: string; imageAlt: string }
   courses: {
+    title: string
     lede: string
     photo: string
     photoAlt: string
-    groups: { age: string; name: string; days: Day[]; time: string }[]
-    extras: { name: string; desc: string }[]
+    // a short muted clip from the studio, shown in place of the photo
+    video?: string
+    // what the school teaches, as cards; used when there is no timetable yet
+    offerings?: { name: string; desc?: string }[]
+    offeringsHeading?: string
+    // the weekly timetable: leave out until the school's schedule is known
+    groups?: { age: string; name: string; days: Day[]; time: string }[]
+    // start times to show as rows even with no class in them yet
+    times?: string[]
+    extras?: { name: string; desc: string }[]
   }
-  teachers: { name: string; role: string; note: string; photo?: string }[]
+  teachers: { name: string; role: string; note?: string; photo?: string }[]
   results?: {
     intro: string
     placements: { rank: string; style: string; event: string; place: string }[]

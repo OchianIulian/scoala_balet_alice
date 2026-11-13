@@ -19,7 +19,7 @@ function Teachers() {
 
               <h3 className="teacher__name">{t.name}</h3>
               <p className="teacher__role">{t.role}</p>
-              <p className="teacher__note">{t.note}</p>
+              {t.note && <p className="teacher__note">{t.note}</p>}
             </li>
           ))}
         </ul>

@@ -10,7 +10,9 @@ folder `src/schools/<slug>/` holding `school.json` (all copy, contacts, image
 paths — shape in `src/schools/types.ts`) and its images; paths in the JSON are
 relative to that folder. Components read it through `useSchool()`
 (`{ school, img }`). `results` and `gallery` are optional and drop out with
-their nav links. Unknown slug → bare "not found" page, deliberately not a
+their nav links. In `courses`, the timetable (`groups`), `offerings` (course
+cards, for when no schedule is known) and `extras` are each optional, and
+`video` (a short muted mp4 from the studio) replaces the intro photo. Unknown slug → bare "not found" page, deliberately not a
 list of schools. `npm run build` copies `index.html` to `404.html` so deep
 links work on GitHub Pages. To add a school: new folder + `school.json`.
 Layout, palette and typography are shared, not per school.
