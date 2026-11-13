@@ -41,26 +41,30 @@ function Courses() {
           </div>
 
           <figure className="courses__photo">
-            {school.courses.video ? (
-              <video
-                src={img(school.courses.video)}
-                poster={img(school.courses.photo)}
-                aria-label={school.courses.photoAlt}
-                autoPlay={!REDUCED_MOTION}
-                controls={REDUCED_MOTION}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
-            ) : (
-              <img src={img(school.courses.photo)} alt={school.courses.photoAlt} />
-            )}
+            <img src={img(school.courses.photo)} alt={school.courses.photoAlt} />
           </figure>
         </div>
+      </div>
 
-        {OFFERINGS.length > 0 && (
-          <>
+      {/* with a studio clip, the course cards sit on a full-bleed band with
+          the clip running behind a velvet wash */}
+      {OFFERINGS.length > 0 && (
+        <div className={school.courses.video ? 'offerings offerings--band' : 'offerings'}>
+          {school.courses.video && (
+            <video
+              className="offerings__bg"
+              src={img(school.courses.video)}
+              poster={img(school.courses.photo)}
+              aria-hidden="true"
+              autoPlay={!REDUCED_MOTION}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+          )}
+
+          <div className="section__inner">
             <h3 className="courses__heading">{school.courses.offeringsHeading}</h3>
 
             <div className="courses__extras">
@@ -71,11 +75,13 @@ function Courses() {
                 </article>
               ))}
             </div>
-          </>
-        )}
+          </div>
+        </div>
+      )}
 
+      <div className="section__inner">
         {TIMES.length > 0 && (
-              <>
+          <>
             {/* with no classes yet the phone list would be empty, so phones
                 skip the heading too */}
             <h3
