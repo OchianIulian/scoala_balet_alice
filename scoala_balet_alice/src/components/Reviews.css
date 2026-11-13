@@ -1,0 +1,65 @@
+.reviews__summary {
+  color: var(--accent-deep);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.reviews__summary:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.reviews__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 1080px;
+  margin: clamp(40px, 5vw, 60px) auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* a white card opened by a large rose quotation mark */
+.review {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 18px;
+  padding: clamp(44px, 4vw, 52px) clamp(24px, 2.6vw, 32px) clamp(26px, 2.6vw, 32px);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 24px 48px -36px rgba(var(--shadow), 0.45);
+}
+
+.review::before {
+  content: '“';
+  position: absolute;
+  top: 10px;
+  left: clamp(20px, 2.4vw, 28px);
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.55;
+}
+
+.review__text {
+  margin: 0;
+  font-size: 15.5px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.review__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-deep);
+}
+
+@media (max-width: 860px) {
+  .reviews__list {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+}

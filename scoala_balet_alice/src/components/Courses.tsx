@@ -1,9 +1,27 @@
+import { useEffect, useRef } from 'react'
 import { useSchool } from '../schools/SchoolContext'
 import type { Day } from '../schools/types'
 import './Courses.css'
 
 // a looping clip shouldn't start by itself for people who asked for less motion
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// a clip downloads nothing until it nears the screen and pauses once it
+// leaves; one hidden by CSS (the sharp copy on phones) never loads at all
+function useClip() {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const video = ref.current
+    if (!video || REDUCED_MOTION) return
+    const observer = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? video.play().catch(() => {}) : video.pause()),
+      { rootMargin: '200px 0px' },
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+  return ref
+}
 
 const WEEK: Day[] = ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică']
 
@@ -21,6 +39,8 @@ function Slot({ course }: { course: Course }) {
 
 function Courses() {
   const { school, img } = useSchool()
+  const bgClip = useClip()
+  const clip = useClip()
   const { groups: COURSES = [], times: EXTRA_TIMES = [], offerings: OFFERINGS = [], extras: EXTRAS = [] } = school.courses
 
   // the timetable's rows: every distinct start time, earliest first
@@ -53,15 +73,15 @@ function Courses() {
         <div className={school.courses.video ? 'offerings offerings--band' : 'offerings'}>
           {school.courses.video && (
             <video
+              ref={bgClip}
               className="offerings__bg"
               src={img(school.courses.video)}
               poster={img(school.courses.photo)}
               aria-hidden="true"
-              autoPlay={!REDUCED_MOTION}
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
             />
           )}
 
@@ -72,15 +92,15 @@ function Courses() {
               {school.courses.video && (
                 <figure className="offerings__video reveal">
                   <video
+                    ref={clip}
                     src={img(school.courses.video)}
                     poster={img(school.courses.photo)}
                     aria-label={school.courses.photoAlt}
-                    autoPlay={!REDUCED_MOTION}
                     controls={REDUCED_MOTION}
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload="none"
                   />
                 </figure>
               )}

@@ -5,6 +5,7 @@ import Courses from './components/Courses'
 import Teachers from './components/Teachers'
 import Results from './components/Results'
 import Gallery from './components/Gallery'
+import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { getSchool, slugFromLocation } from './schools'
@@ -41,6 +42,7 @@ function App() {
         <Courses />
         <Teachers />
         {school.results && <Results />}
+        {school.reviews && <Reviews />}
         {school.gallery?.length ? <Gallery /> : null}
         <Contact />
       </main>

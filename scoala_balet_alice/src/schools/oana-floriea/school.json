@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Oana Floriea Ballet School — Balet pentru copii, Iași",
-    "description": "Oana Floriea Ballet School — cursuri de dans clasic, contemporan și de caracter pentru copii între 3 și 14 ani, în Palas Mall Iași."
+    "description": "Oana Floriea Ballet School — cursuri de dans clasic, contemporan și de caracter pentru copii între 3 și 14 ani, în Palas Mall Iași.",
+    "shareImage": "share.jpg"
   },
   "brand": {
     "name": "Oana Floriea",
@@ -10,23 +11,33 @@
   "hero": {
     "motto": "Descoperim, dezvoltăm și promovăm potențialul fiecărui copil!",
     "image": "cutouts/arabesque-turcoaz.png",
-    "imageAlt": "Balerină în arabesque, în costum turcoaz"
+    "imageAlt": "Balerină în arabesque, în costum turcoaz",
+    "cta": {
+      "label": "Înscrie-te acum",
+      "href": "https://wa.me/40756318284?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20informa%C8%9Bii%20despre%20%C3%AEnscrieri."
+    }
   },
   "courses": {
-    "title": "Descoperim potențialul fiecărui copil",
+    "title": "O lume de poveste începe cu un pas mic",
     "lede": "Cursuri de dans clasic, contemporan și de caracter pentru copii cu vârste între 3 și 14 ani. Sala de cursuri se află în incinta Palas Mall.",
     "photo": "galerie/04-in-sala.jpg",
     "photoAlt": "Eleve exersând la bară, în sala școlii",
     "video": "video/in-sala.mp4",
     "offeringsHeading": "Cursuri",
-    "times": ["10:00"],
+    "times": [
+      "10:00"
+    ],
     "offerings": [
       {
         "name": "Balet și gimnastică",
         "desc": "De la 3 ani. Dezvoltăm postura și grația, flexibilitatea și coordonarea, încrederea în sine și disciplina prin mișcare și dans."
       },
-      { "name": "Dans contemporan" },
-      { "name": "Dans de caracter" },
+      {
+        "name": "Dans contemporan"
+      },
+      {
+        "name": "Dans de caracter"
+      },
       {
         "name": "Open",
         "desc": "Indiferent de nivel, vei găsi grupa potrivită."
@@ -38,29 +49,92 @@
       "name": "Oana Floriea",
       "role": "Fondatoare · profesor",
       "note": "Își însoțește elevele de la primii pași, începând de la 3 ani, până pe scena concursurilor, precum „Lebăda de Cristal”.",
-      "photo": "teachers/oana.jpg"
+      "photo": "teachers/oana.jpg",
+      "quote": "Baletul nu e doar despre pași grațioși sau piruete perfecte. E despre disciplină, eleganță, răbdare, curaj și încredere în sine."
     }
   ],
+  "reviews": {
+    "summary": "100% dintre părinți recomandă școala · 37 de recenzii pe Facebook",
+    "url": "https://www.facebook.com/oanaflorieaballetschool/reviews",
+    "items": [
+      {
+        "text": "Din fetița timidă pe care o aveam, scena a schimbat-o. Acum e o balerină frumoasă și grațioasă.",
+        "name": "Anca"
+      },
+      {
+        "text": "Copiii au crescut, iar părinții au „îmbătrânit” frumos alături de Oana Floriea Ballet School. Recomand cu dragoste.",
+        "name": "Cristina"
+      },
+      {
+        "text": "De aproximativ 4 ani facem parte din echipa și familia Oana Floriea Ballet School. Înseamnă emoție, dăruire, pasiune și dragoste pentru dans.",
+        "name": "Ralu"
+      }
+    ]
+  },
   "gallery": [
-    { "src": "galerie/01-salt.jpg", "alt": "Elevă în salt pe scenă" },
-    { "src": "galerie/02-split-roz.jpg", "alt": "Elevă în costum roz, în extensie pe scenă" },
-    { "src": "galerie/10-crown.jpg", "alt": "Eleve în coregrafia „Crown”, la concursul „Lebăda de Cristal”" },
-    { "src": "galerie/03-tutu-albastru.jpg", "alt": "Elevă în tutu albastru, pe scenă" },
-    { "src": "galerie/04-in-sala.jpg", "alt": "Eleve exersând la bară, în sala școlii" },
-    { "src": "galerie/11-crown-piramida.jpg", "alt": "Piramidă din coregrafia „Crown”, pe scena „Lebăda de Cristal”" },
-    { "src": "galerie/05-gemene.jpg", "alt": "Două fetițe în body roz, la ore" },
-    { "src": "galerie/06-arabesque-turcoaz.jpg", "alt": "Elevă în arabesque, în costum turcoaz" },
-    { "src": "galerie/12-crown-ridicare.jpg", "alt": "Elevă ridicată de colege în coregrafia „Crown”" },
-    { "src": "galerie/07-tutu-lila.jpg", "alt": "Eleve în tutu lila, pe scenă" },
-    { "src": "galerie/08-grupa-rosu.jpg", "alt": "Grup de eleve în costume albe și roșii, pe scenă" },
-    { "src": "galerie/13-crown-zid.jpg", "alt": "Elevă sprijinită de un zid de scenă, în coregrafia „Crown”" },
-    { "src": "galerie/09-arabesque-rosu.jpg", "alt": "Elevă în arabesque, în tutu roșu" }
+    {
+      "src": "galerie/01-salt.jpg",
+      "alt": "Elevă în salt pe scenă"
+    },
+    {
+      "src": "galerie/02-split-roz.jpg",
+      "alt": "Elevă în costum roz, în extensie pe scenă"
+    },
+    {
+      "src": "galerie/10-crown.jpg",
+      "alt": "Eleve în coregrafia „Crown”, la concursul „Lebăda de Cristal”"
+    },
+    {
+      "src": "galerie/03-tutu-albastru.jpg",
+      "alt": "Elevă în tutu albastru, pe scenă"
+    },
+    {
+      "src": "galerie/04-in-sala.jpg",
+      "alt": "Eleve exersând la bară, în sala școlii"
+    },
+    {
+      "src": "galerie/11-crown-piramida.jpg",
+      "alt": "Piramidă din coregrafia „Crown”, pe scena „Lebăda de Cristal”"
+    },
+    {
+      "src": "galerie/05-gemene.jpg",
+      "alt": "Două fetițe în body roz, la ore"
+    },
+    {
+      "src": "galerie/06-arabesque-turcoaz.jpg",
+      "alt": "Elevă în arabesque, în costum turcoaz"
+    },
+    {
+      "src": "galerie/12-crown-ridicare.jpg",
+      "alt": "Elevă ridicată de colege în coregrafia „Crown”"
+    },
+    {
+      "src": "galerie/07-tutu-lila.jpg",
+      "alt": "Eleve în tutu lila, pe scenă"
+    },
+    {
+      "src": "galerie/08-grupa-rosu.jpg",
+      "alt": "Grup de eleve în costume albe și roșii, pe scenă"
+    },
+    {
+      "src": "galerie/13-crown-zid.jpg",
+      "alt": "Elevă sprijinită de un zid de scenă, în coregrafia „Crown”"
+    },
+    {
+      "src": "galerie/09-arabesque-rosu.jpg",
+      "alt": "Elevă în arabesque, în tutu roșu"
+    }
   ],
   "contact": {
-    "addressLines": ["Palas Mall", "Iași"],
+    "addressLines": [
+      "Palas Mall",
+      "Iași"
+    ],
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Palas+Mall+Ia%C8%99i",
     "phone": "0756 318 284",
     "phoneHref": "tel:+40756318284",
-    "instagram": "oana.floriea.ballet.school"
+    "instagram": "oana.floriea.ballet.school",
+    "whatsapp": "40756318284",
+    "intro": "Pentru înscrieri și detalii, sunați-ne sau scrieți-ne pe WhatsApp."
   }
 }

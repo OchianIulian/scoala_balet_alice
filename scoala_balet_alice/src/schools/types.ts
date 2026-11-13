@@ -2,12 +2,19 @@ export type Day = 'Luni' | 'Marți' | 'Miercuri' | 'Joi' | 'Vineri' | 'Sâmbăt�
 
 // Everything that differs between schools. Image fields are paths relative to
 // the school's own folder (src/schools/<slug>/), resolved by `asset()`.
-// `results` and `gallery` are optional: leave them out and the section (and
-// its nav link) disappears.
+// `results`, `reviews` and `gallery` are optional: leave them out and the
+// section (and its nav link) disappears.
 export type School = {
-  meta: { title: string; description: string }
+  // `shareImage` is the picture shown when the link is pasted into a chat
+  meta: { title: string; description: string; shareImage?: string }
   brand: { name: string; kind: string }
-  hero: { motto: string; image: string; imageAlt: string }
+  hero: {
+    motto: string
+    image: string
+    imageAlt: string
+    // the main button; defaults to "Programează o primă ședință" → #contact
+    cta?: { label: string; href: string }
+  }
   courses: {
     title: string
     lede: string
@@ -24,10 +31,17 @@ export type School = {
     times?: string[]
     extras?: { name: string; desc: string }[]
   }
-  teachers: { name: string; role: string; note?: string; photo?: string }[]
+  // `quote` is the teacher's own words, shown under the note
+  teachers: { name: string; role: string; note?: string; quote?: string; photo?: string }[]
   results?: {
     intro: string
     placements: { rank: string; style: string; event: string; place: string }[]
+  }
+  // parents' own reviews; `summary` is the rating line above them
+  reviews?: {
+    summary: string
+    url: string
+    items: { text: string; name: string }[]
   }
   gallery?: { src: string; alt: string }[]
   contact: {
@@ -36,5 +50,9 @@ export type School = {
     phone: string
     phoneHref: string
     instagram: string
+    // international digits only, e.g. 40756318284
+    whatsapp?: string
+    // the line under the contact title; defaults to a call / Instagram invite
+    intro?: string
   }
 }

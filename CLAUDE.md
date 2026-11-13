@@ -9,8 +9,11 @@ One codebase serves several schools. The URL ends with the school's slug
 folder `src/schools/<slug>/` holding `school.json` (all copy, contacts, image
 paths — shape in `src/schools/types.ts`) and its images; paths in the JSON are
 relative to that folder. Components read it through `useSchool()`
-(`{ school, img }`). `results` and `gallery` are optional and drop out with
-their nav links. In `courses`, the timetable (`groups`), `offerings` (course
+(`{ school, img }`). `results`, `reviews` and `gallery` are optional and drop
+out with their nav links. Reviews are parents' public Facebook reviews, quoted
+with first names only and no dates. `hero.cta` sets the main button (default
+"Programează o primă ședință" → #contact); `contact.whatsapp` adds a WhatsApp
+card. In `courses`, the timetable (`groups`), `offerings` (course
 cards, for when no schedule is known) and `extras` are each optional, and
 `video` (a short muted mp4 from the studio) runs blurred behind the course
 cards on a full-bleed velvet band, with a sharp copy beside them on desktop
@@ -18,7 +21,11 @@ cards on a full-bleed velvet band, with a sharp copy beside them on desktop
 dark band when it has no results. Course cards there are frosted glass rows led
 by a rose numeral. Unknown slug → bare "not found" page, deliberately not a
 list of schools. `npm run build` copies `index.html` to `404.html` so deep
-links work on GitHub Pages. To add a school: new folder + `school.json`.
+links work on GitHub Pages, and the `school-pages` plugin in `vite.config.ts`
+writes `dist/<slug>/index.html` with that school's title, description and
+`meta.shareImage` (1200×630) as Open Graph tags — chat apps read those before
+any script runs, so the link preview needs them. `SITE_URL` (set in the deploy
+workflow) makes their URLs absolute. To add a school: new folder + `school.json`.
 Layout, palette and typography are shared, not per school.
 
 ## Content rules
