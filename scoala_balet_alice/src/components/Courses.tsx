@@ -108,12 +108,7 @@ function Courses() {
       <div className="section__inner">
         {TIMES.length > 0 && (
           <>
-            {/* with no classes yet the phone list would be empty, so phones
-                skip the heading too */}
-            <h3
-              className={COURSES.length ? 'courses__heading' : 'courses__heading courses__heading--wide'}
-              id="program-grupe"
-            >
+            <h3 className="courses__heading" id="program-grupe">
               Program pe grupe de vârstă
             </h3>
 
@@ -146,16 +141,25 @@ function Courses() {
               ))}
             </div>
 
-            {/* phones: the same week as a list, only the days with classes */}
+            {/* phones: the same week as a list, only the days with classes. Until
+                the schedule is filled in, every day shows its empty start
+                times, like the empty rows of the timetable */}
             <ol className="daylist reveal" aria-label="Program pe zile">
-              {WEEK.filter((day) => COURSES.some((c) => c.days.includes(day))).map((day) => (
-                <li className="daylist__day" key={day}>
-                  <h4>{day}</h4>
-                  {TIMES.flatMap((time) => at(day, time)).map((c) => (
-                    <Slot course={c} key={c.age} />
-                  ))}
-                </li>
-              ))}
+              {(COURSES.length ? WEEK.filter((day) => COURSES.some((c) => c.days.includes(day))) : WEEK).map(
+                (day) => (
+                  <li className="daylist__day" key={day}>
+                    <h4>{day}</h4>
+                    {COURSES.length
+                      ? TIMES.flatMap((time) => at(day, time)).map((c) => <Slot course={c} key={c.age} />)
+                      : TIMES.map((time) => (
+                          <div className="slot slot--empty" key={time}>
+                            <span className="slot__time">{time}</span>
+                            <span className="slot__blank" />
+                          </div>
+                        ))}
+                  </li>
+                ),
+              )}
             </ol>
           </>
         )}
