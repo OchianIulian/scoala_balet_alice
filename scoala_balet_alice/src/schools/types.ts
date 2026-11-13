@@ -13,7 +13,7 @@ export type School = {
     lede: string
     photo: string
     photoAlt: string
-    // a short muted clip from the studio, shown in place of the photo
+    // a short muted clip from the studio, shown beside the course cards
     video?: string
     // what the school teaches, as cards; used when there is no timetable yet
     offerings?: { name: string; desc?: string }[]

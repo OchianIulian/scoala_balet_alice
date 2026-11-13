@@ -19,6 +19,23 @@ function Slot({ course }: { course: Course }) {
   )
 }
 
+// the studio clip: muted and looping, like the reel it came from
+function Clip({ src, poster, label }: { src: string; poster: string; label: string }) {
+  return (
+    <video
+      src={src}
+      poster={poster}
+      aria-label={label}
+      autoPlay={!REDUCED_MOTION}
+      controls={REDUCED_MOTION}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+    />
+  )
+}
+
 function Courses() {
   const { school, img } = useSchool()
   const { groups: COURSES = [], times: EXTRA_TIMES = [], offerings: OFFERINGS = [], extras: EXTRAS = [] } = school.courses
@@ -41,21 +58,7 @@ function Courses() {
           </div>
 
           <figure className="courses__photo">
-            {school.courses.video ? (
-              <video
-                src={img(school.courses.video)}
-                poster={img(school.courses.photo)}
-                aria-label={school.courses.photoAlt}
-                autoPlay={!REDUCED_MOTION}
-                controls={REDUCED_MOTION}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
-            ) : (
-              <img src={img(school.courses.photo)} alt={school.courses.photoAlt} />
-            )}
+            <img src={img(school.courses.photo)} alt={school.courses.photoAlt} />
           </figure>
         </div>
 
@@ -63,19 +66,32 @@ function Courses() {
           <>
             <h3 className="courses__heading">{school.courses.offeringsHeading}</h3>
 
-            <div className="courses__extras">
-              {OFFERINGS.map((o) => (
-                <article className="extra reveal" key={o.name}>
-                  <h4 className="extra__name">{o.name}</h4>
-                  {o.desc && <p className="extra__desc">{o.desc}</p>}
-                </article>
-              ))}
+            {/* the clip from the studio stands beside the courses it shows */}
+            <div className={school.courses.video ? 'offerings offerings--video' : 'offerings'}>
+              {school.courses.video && (
+                <figure className="offerings__video reveal">
+                  <Clip
+                    src={img(school.courses.video)}
+                    poster={img(school.courses.photo)}
+                    label={school.courses.photoAlt}
+                  />
+                </figure>
+              )}
+
+              <div className="courses__extras">
+                {OFFERINGS.map((o) => (
+                  <article className="extra reveal" key={o.name}>
+                    <h4 className="extra__name">{o.name}</h4>
+                    {o.desc && <p className="extra__desc">{o.desc}</p>}
+                  </article>
+                ))}
+              </div>
             </div>
           </>
         )}
 
         {TIMES.length > 0 && (
-              <>
+          <>
             {/* with no classes yet the phone list would be empty, so phones
                 skip the heading too */}
             <h3

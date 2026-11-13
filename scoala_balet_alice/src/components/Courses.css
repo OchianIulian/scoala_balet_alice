@@ -29,8 +29,7 @@
   box-shadow: 0 34px 60px -40px rgba(var(--shadow), 0.55);
 }
 
-.courses__photo img,
-.courses__photo video {
+.courses__photo img {
   display: block;
   width: 100%;
   aspect-ratio: 1;
@@ -43,6 +42,42 @@
   margin-top: clamp(64px, 8vw, 104px);
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   text-align: center;
+}
+
+/* ---------- course cards, the studio clip beside them ---------- */
+
+.offerings--video {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+  max-width: 1000px;
+  margin: clamp(26px, 3vw, 38px) auto 0;
+}
+
+.offerings__video {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--leaf);
+  box-shadow: 0 34px 60px -40px rgba(var(--shadow), 0.55);
+}
+
+.offerings__video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+/* stacked beside the clip rather than in a centred pair of columns */
+.offerings--video .courses__extras {
+  grid-template-columns: 1fr;
+  max-width: none;
+  margin: 0;
+}
+
+.offerings--video .extra {
+  text-align: left;
 }
 
 /* ---------- timetable ---------- */
@@ -208,6 +243,21 @@
   .courses__photo {
     --leaf: 90px 0 90px 0;
     max-width: 480px;
+  }
+
+  /* phones: the clip full width like the reel it came from, cards below */
+  .offerings--video {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .offerings__video {
+    --leaf: 90px 0 90px 0;
+    width: min(100%, 400px);
+  }
+
+  .offerings--video .courses__extras {
+    width: 100%;
   }
 }
 
