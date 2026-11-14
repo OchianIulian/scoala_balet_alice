@@ -42,11 +42,13 @@
   "teachers": [
     {
       "name": "Nicola Loredana",
-      "role": "Profesor · balet și dans contemporan"
+      "role": "Profesor · balet și dans contemporan",
+      "photo": "teachers/loredana.jpg"
     },
     {
       "name": "Almahadin Amina",
-      "role": "Profesor · dans modern"
+      "role": "Profesor · dans modern",
+      "photo": "teachers/amina.jpg"
     }
   ],
   "reviews": {
