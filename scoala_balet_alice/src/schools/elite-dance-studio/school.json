@@ -77,8 +77,11 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bulevardul+Carol+I+101+Craiova",
     "phone": "0768 744 001",
     "phoneHref": "tel:+40768744001",
+    "phones": [
+      { "number": "0768 744 001", "href": "tel:+40768744001", "label": "Loredana · balet, contemporan" },
+      { "number": "0764 749 929", "href": "tel:+40764749929", "label": "Amina · dans modern" }
+    ],
     "facebook": "https://www.facebook.com/BaletCraiova",
-    "instagram": "elitedancestudio_craiova",
-    "intro": "Înscrieri la balet și dans contemporan: 0768 744 001 (Loredana). Înscrieri la dans modern: 0764 749 929 (Amina)."
+    "instagram": "elitedancestudio_craiova"
   }
 }
