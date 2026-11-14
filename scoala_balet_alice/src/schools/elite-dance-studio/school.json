@@ -43,11 +43,13 @@
     {
       "name": "Nicola Loredana",
       "role": "Profesor · balet și dans contemporan",
+      "note": "A studiat coregrafia la Liceul de Arte „Ion Vidu” din Timișoara și la UNATC București. La Elite predă balet și dans contemporan.",
       "photo": "teachers/loredana.jpg"
     },
     {
       "name": "Almahadin Amina",
       "role": "Profesor · dans modern",
+      "note": "Absolventă a Colegiului Național Pedagogic „Ștefan Velovan” din Craiova și a Facultății de Educație Fizică și Sport, secția Kinetoterapie. La Elite predă dans modern.",
       "photo": "teachers/amina.jpg"
     }
   ],
