@@ -6,7 +6,7 @@ export const navFor = (school: School) =>
   [
     { label: 'Acasă', href: '#acasa' },
     { label: 'Cursuri', href: '#cursuri' },
-    { label: 'Profesori', href: '#profesori' },
+    school.teachers.length > 0 && { label: 'Profesori', href: '#profesori' },
     school.results && { label: 'Rezultate', href: '#rezultate' },
     school.gallery?.length && { label: 'Galerie', href: '#galerie' },
     { label: 'Contact', href: '#contact' },

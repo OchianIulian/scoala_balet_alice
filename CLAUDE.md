@@ -13,7 +13,9 @@ relative to that folder. Components read it through `useSchool()`
 out with their nav links. Reviews are parents' public Facebook reviews, quoted
 with first names only and no dates. `hero.cta` sets the main button (default
 "Programează o primă ședință" → #contact); `contact.whatsapp` adds a WhatsApp
-card. In `courses`, the timetable (`groups`), `offerings` (course
+card, and `contact.facebook` / `contact.instagram` (each optional) add theirs.
+An empty `teachers` list drops the teachers section and its nav link, for a
+school whose teachers aren't named anywhere yet. In `courses`, the timetable (`groups`), `offerings` (course
 cards, for when no schedule is known) and `extras` are each optional, and
 `video` (a short muted mp4 from the studio) runs blurred behind the course
 cards on a full-bleed velvet band, with a sharp copy beside them on desktop
