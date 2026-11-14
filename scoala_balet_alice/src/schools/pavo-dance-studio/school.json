@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "title": "PAVO Dance Studio — Cursuri de dans pentru copii, Ploiești",
+    "description": "PAVO Dance Studio — cursuri de balet, dans contemporan și dans modern pentru copii de la 3 ani, în Ploiești și Cocorăștii Mislii. Prima ședință este gratuită!",
+    "shareImage": "share.jpg"
+  },
+  "brand": {
+    "name": "PAVO",
+    "kind": "Dance Studio"
+  },
+  "hero": {
+    "motto": "Dansăm, evoluăm și creștem împreună!",
+    "image": "cutouts/salt-roz.png",
+    "imageAlt": "Fetiță în tutu roz, într-un salt"
+  },
+  "courses": {
+    "title": "Descoperă bucuria dansului",
+    "lede": "PAVO Dance Studio vă oferă cursuri de dans pentru copii, începând cu vârsta de 3 ani. Dacă vă doriți un stil de viață sănătos și o dezvoltare armonioasă pentru copilul dumneavoastră, vă așteptăm la cursurile noastre de balet, dans contemporan și dans modern!",
+    "photo": "galerie/00-tutu-roz-scena.jpg",
+    "photoAlt": "Eleve în tutu roz, pe scenă",
+    "offeringsHeading": "Cursuri",
+    "offerings": [
+      {
+        "name": "Balet, dans contemporan și dans modern",
+        "desc": "Grupe pe vârste: Baby (3 ani), 4–5 ani, 5–7 ani și 10–12 ani (intermediari)."
+      },
+      {
+        "name": "Acro",
+        "desc": "Cu Nicoleta Mihăescu, fostă gimnastă de performanță, fetele își dezvoltă abilitățile acrobatice, forța, mobilitatea și coordonarea."
+      },
+      {
+        "name": "Aerobic pentru mămici",
+        "desc": "Nu doar cei mici se antrenează, ci și ele! Pentru că merită să își dedice puțin timp și lor."
+      }
+    ]
+  },
+  "teachers": [],
+  "results": {
+    "intro": "Fetele noastre au urcat pe scena Black Swan International Dance Competition de la Paris și s-au întors cu locul 1.",
+    "placements": [
+      { "rank": "Locul 1", "style": "Lyrical", "event": "Black Swan International Dance Competition", "place": "Paris" }
+    ]
+  },
+  "gallery": [
+    { "src": "galerie/01-black-swan-paris.jpg", "alt": "Elevele PAVO pe scena Black Swan International Dance Competition, la Paris" },
+    { "src": "galerie/02-tutu-alb-rosu.jpg", "alt": "Eleve în tutu alb cu roșu, la concurs" },
+    { "src": "galerie/03-dancero.jpg", "alt": "Grupa PAVO pe scena DanceRo" },
+    { "src": "galerie/04-minnie.jpg", "alt": "Fetițe în costume de Minnie, pe scenă" },
+    { "src": "galerie/05-gala.jpg", "alt": "Elevele PAVO la gala finală, pe scenă" },
+    { "src": "galerie/06-stride.jpg", "alt": "Eleve în tutu alb cu roșu, la concursul Stride" },
+    { "src": "galerie/07-black-swan-scena.jpg", "alt": "Eleve în tutu roz, pe scena de la Paris" },
+    { "src": "galerie/08-vrajitorul-din-oz.jpg", "alt": "Spectacolul „Vrăjitorul din Oz”" },
+    { "src": "galerie/09-tutu-lila.jpg", "alt": "Elevă în tutu lila, cu trofeul" },
+    { "src": "galerie/10-dancero-grup.jpg", "alt": "Elevele PAVO în coregrafie, la DanceRo" },
+    { "src": "galerie/11-black-swan-tutu.jpg", "alt": "Eleve în tutu roz, dansând pe scenă" },
+    { "src": "galerie/12-spectacol.jpg", "alt": "Eleve în costume colorate, pe scenă" }
+  ],
+  "contact": {
+    "addressLines": ["Strada Nucilor nr. 1A, Ploiești", "Cocorăștii Mislii, Prahova"],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Strada+Nucilor+1A+Ploie%C8%99ti",
+    "phone": "0760 037 272",
+    "phoneHref": "tel:+40760037272",
+    "facebook": "https://www.facebook.com/PAVODance",
+    "instagram": "pavodancestudio",
+    "intro": "Prima ședință este gratuită! Sunați-ne sau scrieți-ne pe Facebook și Instagram."
+  }
+}
