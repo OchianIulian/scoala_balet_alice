@@ -10,14 +10,14 @@
   },
   "hero": {
     "motto": "Dansăm, evoluăm și creștem împreună!",
-    "image": "cutouts/salt-roz.png",
-    "imageAlt": "Fetiță în tutu roz, într-un salt"
+    "image": "cutouts/duo.png",
+    "imageAlt": "Două eleve, față în față pe scenă"
   },
   "courses": {
     "title": "Descoperă bucuria dansului",
     "lede": "PAVO Dance Studio vă oferă cursuri de dans pentru copii, începând cu vârsta de 3 ani. Dacă vă doriți un stil de viață sănătos și o dezvoltare armonioasă pentru copilul dumneavoastră, vă așteptăm la cursurile noastre de balet, dans contemporan și dans modern!",
-    "photo": "galerie/00-tutu-roz-scena.jpg",
-    "photoAlt": "Eleve în tutu roz, pe scenă",
+    "photo": "galerie/00-tutu-alb-rosu.jpg",
+    "photoAlt": "Eleve în tutu alb cu roșu, la concurs",
     "video": "video/clip.mp4",
     "offeringsHeading": "Cursuri",
     "offerings": [
@@ -44,7 +44,6 @@
   },
   "gallery": [
     { "src": "galerie/01-black-swan-paris.jpg", "alt": "Elevele PAVO pe scena Black Swan International Dance Competition, la Paris" },
-    { "src": "galerie/02-tutu-alb-rosu.jpg", "alt": "Eleve în tutu alb cu roșu, la concurs" },
     { "src": "galerie/03-dancero.jpg", "alt": "Grupa PAVO pe scena DanceRo" },
     { "src": "galerie/04-minnie.jpg", "alt": "Fetițe în costume de Minnie, pe scenă" },
     { "src": "galerie/05-gala.jpg", "alt": "Elevele PAVO la gala finală, pe scenă" },
