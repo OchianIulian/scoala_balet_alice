@@ -63,3 +63,9 @@
     max-width: 560px;
   }
 }
+
+/* a single review stands centred, a little wider, rather than in the first of three slots */
+.reviews__list:has(> .review:only-child) {
+  grid-template-columns: minmax(0, 560px);
+  justify-content: center;
+}
