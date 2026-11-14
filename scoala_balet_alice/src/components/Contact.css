@@ -1,6 +1,7 @@
 .contact__list {
   display: grid;
-  /* three or four cards, depending on whether the school takes WhatsApp */
+  /* three to five cards: address and phone, plus WhatsApp, Facebook and
+     Instagram for the schools that have them */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: clamp(14px, 2vw, 24px);
   max-width: 1000px;

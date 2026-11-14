@@ -109,3 +109,31 @@
     border-radius: 90px 0 90px 0;
   }
 }
+
+/* a teacher with no photo yet: the words alone, centred under the title */
+.teacher:not(:has(.teacher__photo)) {
+  justify-items: center;
+  text-align: center;
+}
+
+.teachers__list--solo .teacher:not(:has(.teacher__photo)) {
+  grid-template-columns: 1fr;
+}
+
+.teacher:not(:has(.teacher__photo)) .teacher__note {
+  margin-inline: auto;
+}
+
+.teacher:not(:has(.teacher__photo)) .teacher__quote {
+  margin-inline: auto;
+}
+
+.teacher:not(:has(.teacher__photo)) .teacher__quote::before {
+  left: 50%;
+  translate: -50% 0;
+}
+
+/* with no photos anywhere, the names fit side by side, however many */
+.teachers__list:not(:has(.teacher__photo)) {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}

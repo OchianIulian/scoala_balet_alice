@@ -40,7 +40,7 @@ function App() {
       <main>
         <Hero />
         <Courses />
-        <Teachers />
+        {school.teachers.length > 0 && <Teachers />}
         {school.results && <Results />}
         {school.reviews && <Reviews />}
         {school.gallery?.length ? <Gallery /> : null}

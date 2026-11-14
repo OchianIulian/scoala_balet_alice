@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Anette Classic Dance — Școală de balet, Oradea",
+    "description": "Anette Classic Dance Oradea — cursuri de balet după metoda Vaganova pentru copii, adolescenți și adulți, la Casa de Cultură a Sindicatelor. Pași mici azi, visuri mari mâine!",
+    "shareImage": "share.jpg"
+  },
+  "brand": {
+    "name": "Anette",
+    "kind": "Classic Dance"
+  },
+  "hero": {
+    "motto": "Pași mici azi, visuri mari mâine!",
+    "image": "cutouts/tutu-alb.png",
+    "imageAlt": "Balerină în tutu alb, pe scenă",
+    "cta": {
+      "label": "Rezervă o testare",
+      "href": "https://wa.me/40743366085?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20s%C4%83%20rezerv%20o%20testare%20la%20balet."
+    }
+  },
+  "courses": {
+    "title": "Descoperă bucuria baletului",
+    "lede": "Fiecare copil are un vis, iar noi îl ajutăm să prindă contur, pas cu pas, cu grație, încredere și multă bucurie. Predăm după metoda Vaganova (programa Școlii Bolshoi), în grupe pentru copii, adolescenți și adulți.",
+    "photo": "galerie/00-tutu-bleu.jpg",
+    "photoAlt": "Elevă în tutu bleu, pe scenă",
+    "offeringsHeading": "Cursuri",
+    "offerings": [
+      {
+        "name": "Primii pași în lumea balerinelor",
+        "desc": "Pentru fetițele de 5–6 ani. Învățăm să ascultăm muzica, să ne mișcăm cu grație, să ne bucurăm de dans și, mai ales, să prindem drag de scenă."
+      },
+      {
+        "name": "Balet pentru suflet",
+        "desc": "Grupe de hobby pentru 5–6, 7–9, 10–14 ani, 15+ și seniori. Nu trebuie să fii dansator. Nu trebuie să fii perfect. Trebuie doar să îți dorești să încerci."
+      },
+      {
+        "name": "Ballet Intensiv",
+        "desc": "Grupe pentru 7–9, 10–14 ani, 15+ și seniori. Participăm la competiții naționale și internaționale și urcăm pe scenă în spectacole și evenimente artistice."
+      },
+      {
+        "name": "Balet pentru adulți",
+        "desc": "Grupa de începători și seniori. La balet nu există „prea târziu” pentru a începe."
+      }
+    ]
+  },
+  "teachers": [
+    {
+      "name": "Toth Ana Maria",
+      "role": "Profesor coordonator",
+      "note": "Anette Classic Dance este prima școală de balet din Bihor certificată în metoda de predare Vaganova: profesorul coordonator a obținut certificarea Bolshoi Ballet Academy pentru modulele Prebalet și Balet (anul I).",
+      "quote": "Baletul nu are termen de expirare. Are doar nevoie de muncă. De răbdare. De dragoste multă."
+    }
+  ],
+  "gallery": [
+    { "src": "galerie/01-salt-rosu.jpg", "alt": "Elevă în salt, în costum roșu, la IDO International Dance" },
+    { "src": "galerie/02-arabesque-verde.jpg", "alt": "Elevă în arabesque, în rochie verde de voal" },
+    { "src": "galerie/03-trio-buline.jpg", "alt": "Trei eleve în costume cu buline roșii, pe scenă" },
+    { "src": "galerie/04-tutu-roz.jpg", "alt": "Elevă în tutu roz, pe scenă" },
+    { "src": "galerie/05-arabesque-rosu.jpg", "alt": "Elevă în arabesque, în costum roșu" },
+    { "src": "galerie/06-solo-ido.jpg", "alt": "Elevă în rochie cu buline, la IDO International Dance" },
+    { "src": "galerie/07-trio-alb.jpg", "alt": "Trei eleve în rochii albe, pe scenă" },
+    { "src": "galerie/08-arabesque-albastru.jpg", "alt": "Elevă în arabesque, în rochie albastră" },
+    { "src": "galerie/09-tutu-rosu.jpg", "alt": "Elevă în tutu roșu, în arabesque" },
+    { "src": "galerie/10-play-piersica.jpg", "alt": "Elevă în rochie piersică, la PLAY International Dance Competition" },
+    { "src": "galerie/11-contemporan.jpg", "alt": "Grupul de intensiv într-o coregrafie, pe scenă" },
+    { "src": "galerie/12-atitudine-rosu.jpg", "alt": "Elevă în tutu roșu, în atitudine" }
+  ],
+  "contact": {
+    "addressLines": ["Casa de Cultură a Sindicatelor", "Parcul 1 Decembrie, Oradea"],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Casa+de+Cultur%C4%83+a+Sindicatelor+Oradea",
+    "phone": "0743 366 085",
+    "phoneHref": "tel:+40743366085",
+    "whatsapp": "40743366085",
+    "facebook": "https://www.facebook.com/profile.php?id=100089054146764",
+    "intro": "Pentru program, tarife și înscrieri, scrieți-ne pe WhatsApp."
+  }
+}

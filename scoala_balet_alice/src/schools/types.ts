@@ -31,7 +31,9 @@ export type School = {
     times?: string[]
     extras?: { name: string; desc: string }[]
   }
-  // `quote` is the teacher's own words, shown under the note
+  // `quote` is the teacher's own words, shown under the note. Leave the list
+  // empty until the school names its teachers: the section and its nav link
+  // drop out
   teachers: { name: string; role: string; note?: string; quote?: string; photo?: string }[]
   results?: {
     intro: string
@@ -49,7 +51,10 @@ export type School = {
     mapsUrl: string
     phone: string
     phoneHref: string
-    instagram: string
+    // a school may be on Instagram, Facebook or both; each adds a card
+    instagram?: string
+    // the page's full address, e.g. https://www.facebook.com/BaletCraiova
+    facebook?: string
     // international digits only, e.g. 40756318284
     whatsapp?: string
     // the line under the contact title; defaults to a call / Instagram invite

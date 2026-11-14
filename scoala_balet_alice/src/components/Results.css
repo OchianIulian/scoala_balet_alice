@@ -58,3 +58,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* a single placement stands centred rather than in the first of four slots */
+.results__list:has(> .result:only-child) {
+  grid-template-columns: minmax(0, 320px);
+  justify-content: center;
+}

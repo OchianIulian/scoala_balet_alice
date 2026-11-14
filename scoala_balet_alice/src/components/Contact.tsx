@@ -29,6 +29,15 @@ function InstagramIcon() {
   )
 }
 
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+      <path d="M15.5 8.2h-1.6c-1 0-1.7.8-1.7 1.8v10.5M10 13h5" />
+    </svg>
+  )
+}
+
 function WhatsAppIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -91,32 +100,46 @@ function Contact() {
             </li>
           )}
 
-          <li className="contact__item reveal">
-            <a
-              href={`https://www.instagram.com/${contact.instagram}/`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="contact__icon">
-                <InstagramIcon />
-              </span>
-              <span className="contact__label">Instagram</span>
-              {/* long handles break at their dots rather than overflow the card */}
-              <span className="contact__value">
-                @
-                {contact.instagram.split('.').map((part, i) => (
-                  <Fragment key={i}>
-                    {i > 0 && (
-                      <>
-                        .<wbr />
-                      </>
-                    )}
-                    {part}
-                  </Fragment>
-                ))}
-              </span>
-            </a>
-          </li>
+          {contact.facebook && (
+            <li className="contact__item reveal">
+              <a href={contact.facebook} target="_blank" rel="noreferrer">
+                <span className="contact__icon">
+                  <FacebookIcon />
+                </span>
+                <span className="contact__label">Facebook</span>
+                <span className="contact__value">Urmăriți-ne pe Facebook</span>
+              </a>
+            </li>
+          )}
+
+          {contact.instagram && (
+            <li className="contact__item reveal">
+              <a
+                href={`https://www.instagram.com/${contact.instagram}/`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="contact__icon">
+                  <InstagramIcon />
+                </span>
+                <span className="contact__label">Instagram</span>
+                {/* long handles break at their dots rather than overflow the card */}
+                <span className="contact__value">
+                  @
+                  {contact.instagram.split('.').map((part, i) => (
+                    <Fragment key={i}>
+                      {i > 0 && (
+                        <>
+                          .<wbr />
+                        </>
+                      )}
+                      {part}
+                    </Fragment>
+                  ))}
+                </span>
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </section>
