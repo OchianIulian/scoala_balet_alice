@@ -49,6 +49,15 @@
       "role": "Profesor · dans modern"
     }
   ],
+  "reviews": {
+    "summary": "5,0 pe Google · 9 recenzii",
+    "url": "https://www.google.com/maps/search/?api=1&query=Balet+Craiova+Bulevardul+Carol+I+101",
+    "items": [
+      { "text": "Minunat!! Oameni de calitate și profesioniști.", "name": "Adrian" },
+      { "text": "Profesoare cu experiență și ambianță plăcută.", "name": "Bogdan" },
+      { "text": "Un loc în care copiii merg cu plăcere!", "name": "Ramona" }
+    ]
+  },
   "gallery": [
     { "src": "galerie/01-tutu-alb-albastru.jpg", "alt": "Elevă în tutu alb cu albastru, cu brațele sus" },
     { "src": "galerie/02-tutu-rosu.jpg", "alt": "Elevă în tutu roșu, pe scenă" },
