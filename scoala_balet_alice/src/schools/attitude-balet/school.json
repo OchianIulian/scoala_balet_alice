@@ -36,6 +36,16 @@
     { "name": "Erna Marin", "role": "Profesor", "photo": "teachers/erna.jpg" },
     { "name": "Ruxandra Andruță", "role": "Profesor", "photo": "teachers/ruxandra.jpg" }
   ],
+  "reviews": {
+    "summary": "Din recenziile de pe Facebook",
+    "url": "https://www.facebook.com/attitudebalet/reviews",
+    "items": [
+      {
+        "text": "O echipă super profesionistă! Totul la superlativ! Recomand cu drag, fata mea adoră să meargă la orele de balet!",
+        "name": "Felicia"
+      }
+    ]
+  },
   "gallery": [
     { "src": "galerie/01-trio-alb-negru.jpg", "alt": "Trei eleve în tutu, fotografie alb-negru" },
     { "src": "galerie/02-winter-dance.jpg", "alt": "Eleve în rochii turcoaz, în spectacolul „Winter Dance”" },
