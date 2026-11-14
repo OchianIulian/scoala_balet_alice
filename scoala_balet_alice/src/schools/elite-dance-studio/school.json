@@ -42,13 +42,26 @@
   "teachers": [
     {
       "name": "Nicola Loredana",
-      "role": "Profesor · balet și dans contemporan"
+      "role": "Profesor · balet și dans contemporan",
+      "note": "A studiat coregrafia la Liceul de Arte „Ion Vidu” din Timișoara și la UNATC București. La Elite predă balet și dans contemporan.",
+      "photo": "teachers/loredana.jpg"
     },
     {
       "name": "Almahadin Amina",
-      "role": "Profesor · dans modern"
+      "role": "Profesor · dans modern",
+      "note": "Absolventă a Colegiului Național Pedagogic „Ștefan Velovan” din Craiova și a Facultății de Educație Fizică și Sport, secția Kinetoterapie. La Elite predă dans modern.",
+      "photo": "teachers/amina.jpg"
     }
   ],
+  "reviews": {
+    "summary": "5,0 pe Google · 9 recenzii",
+    "url": "https://www.google.com/maps/search/?api=1&query=Balet+Craiova+Bulevardul+Carol+I+101",
+    "items": [
+      { "text": "Minunat!! Oameni de calitate și profesioniști.", "name": "Adrian" },
+      { "text": "Profesoare cu experiență și ambianță plăcută.", "name": "Bogdan" },
+      { "text": "Un loc în care copiii merg cu plăcere!", "name": "Ramona" }
+    ]
+  },
   "gallery": [
     { "src": "galerie/01-tutu-alb-albastru.jpg", "alt": "Elevă în tutu alb cu albastru, cu brațele sus" },
     { "src": "galerie/02-tutu-rosu.jpg", "alt": "Elevă în tutu roșu, pe scenă" },
@@ -68,8 +81,11 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bulevardul+Carol+I+101+Craiova",
     "phone": "0768 744 001",
     "phoneHref": "tel:+40768744001",
+    "phones": [
+      { "number": "0768 744 001", "href": "tel:+40768744001", "label": "Loredana · balet, contemporan" },
+      { "number": "0764 749 929", "href": "tel:+40764749929", "label": "Amina · dans modern" }
+    ],
     "facebook": "https://www.facebook.com/BaletCraiova",
-    "instagram": "elitedancestudio_craiova",
-    "intro": "Înscrieri la balet și dans contemporan: 0768 744 001 (Loredana). Înscrieri la dans modern: 0764 749 929 (Amina)."
+    "instagram": "elitedancestudio_craiova"
   }
 }

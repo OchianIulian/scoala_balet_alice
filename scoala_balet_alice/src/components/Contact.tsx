@@ -76,17 +76,36 @@ function Contact() {
             </a>
           </li>
 
-          <li className="contact__item reveal">
-            <a href={contact.phoneHref}>
-              <span className="contact__icon">
-                <PhoneIcon />
-              </span>
-              <span className="contact__label">Telefon</span>
-              <span className="contact__value contact__value--strong">
-                {contact.phone}
-              </span>
-            </a>
-          </li>
+          {/* a school taking enrolments on several numbers lists each one,
+              labelled, in the one card; each number is its own link */}
+          {contact.phones ? (
+            <li className="contact__item reveal">
+              <div className="contact__card">
+                <span className="contact__icon">
+                  <PhoneIcon />
+                </span>
+                <span className="contact__label">Telefon</span>
+                {contact.phones.map((p) => (
+                  <a className="contact__phone" href={p.href} key={p.number}>
+                    <span className="contact__value contact__value--strong">{p.number}</span>
+                    <span className="contact__phone-label">{p.label}</span>
+                  </a>
+                ))}
+              </div>
+            </li>
+          ) : (
+            <li className="contact__item reveal">
+              <a href={contact.phoneHref}>
+                <span className="contact__icon">
+                  <PhoneIcon />
+                </span>
+                <span className="contact__label">Telefon</span>
+                <span className="contact__value contact__value--strong">
+                  {contact.phone}
+                </span>
+              </a>
+            </li>
+          )}
 
           {contact.whatsapp && (
             <li className="contact__item reveal">
@@ -123,16 +142,13 @@ function Contact() {
                   <InstagramIcon />
                 </span>
                 <span className="contact__label">Instagram</span>
-                {/* long handles break at their dots rather than overflow the card */}
+                {/* long handles break after their dots and underscores rather than
+                  overflow the card */}
                 <span className="contact__value">
                   @
-                  {contact.instagram.split('.').map((part, i) => (
+                  {contact.instagram.split(/(?<=[._])/).map((part, i) => (
                     <Fragment key={i}>
-                      {i > 0 && (
-                        <>
-                          .<wbr />
-                        </>
-                      )}
+                      {i > 0 && <wbr />}
                       {part}
                     </Fragment>
                   ))}

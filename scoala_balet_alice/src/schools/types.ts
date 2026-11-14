@@ -51,6 +51,9 @@ export type School = {
     mapsUrl: string
     phone: string
     phoneHref: string
+    // a school taking enrolments on several numbers lists them all, each
+    // labelled with what it's for; shown in the phone card instead of `phone`
+    phones?: { number: string; href: string; label: string }[]
     // a school may be on Instagram, Facebook or both; each adds a card
     instagram?: string
     // the page's full address, e.g. https://www.facebook.com/BaletCraiova
