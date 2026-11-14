@@ -32,9 +32,9 @@
     ]
   },
   "teachers": [
-    { "name": "Olguța Ilie", "role": "Profesor" },
-    { "name": "Erna Marin", "role": "Profesor" },
-    { "name": "Ruxandra Andruță", "role": "Profesor" }
+    { "name": "Olguța Ilie", "role": "Profesor", "photo": "teachers/olguta.jpg" },
+    { "name": "Erna Marin", "role": "Profesor", "photo": "teachers/erna.jpg" },
+    { "name": "Ruxandra Andruță", "role": "Profesor", "photo": "teachers/ruxandra.jpg" }
   ],
   "gallery": [
     { "src": "galerie/01-trio-alb-negru.jpg", "alt": "Trei eleve în tutu, fotografie alb-negru" },

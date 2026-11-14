@@ -74,6 +74,14 @@
   opacity: 0.6;
 }
 
+/* three or more teachers share one row rather than leave one alone below */
+@media (min-width: 761px) {
+  .teachers__list:has(> .teacher:nth-child(3)) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1120px;
+  }
+}
+
 .teachers__list--solo {
   grid-template-columns: 1fr;
   max-width: 980px;
