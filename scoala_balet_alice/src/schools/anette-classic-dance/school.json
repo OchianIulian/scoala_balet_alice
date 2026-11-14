@@ -51,6 +51,16 @@
       "quote": "Baletul nu are termen de expirare. Are doar nevoie de muncă. De răbdare. De dragoste multă."
     }
   ],
+  "reviews": {
+    "summary": "Din recenziile de pe Facebook",
+    "url": "https://www.facebook.com/profile.php?id=100089054146764&sk=reviews",
+    "items": [
+      {
+        "text": "Suntem mândri că facem parte din povestea echipei de balerine a Școlii Anette Classic Dance de peste 4 ani! Împreună am evoluat, am crescut, am învățat, am participat la competiții, am plâns, ne-am bucurat de premii și clasamente, spectacole și opere! Pe lângă toate acestea legăm prietenii, împărtășim experiențe, ajutăm și empatizăm.",
+        "name": "Maria"
+      }
+    ]
+  },
   "gallery": [
     { "src": "galerie/01-salt-rosu.jpg", "alt": "Elevă în salt, în costum roșu, la IDO International Dance" },
     { "src": "galerie/02-arabesque-verde.jpg", "alt": "Elevă în arabesque, în rochie verde de voal" },
