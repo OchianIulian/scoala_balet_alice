@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "Attitude — Școala de balet a Operei Române Craiova",
+    "description": "Attitude Balet Craiova — cursuri de balet pentru toate nivelurile, începând cu vârsta de 3 ani, și spectacole pe scena Operei Române Craiova. Descoperă magia baletului alături de noi!",
+    "shareImage": "share.jpg"
+  },
+  "brand": {
+    "name": "Attitude",
+    "kind": "Școala de balet"
+  },
+  "hero": {
+    "motto": "Descoperă magia baletului alături de noi!",
+    "image": "cutouts/tutu-rosu.png",
+    "imageAlt": "Balerină în tutu roșu, cu o panglică"
+  },
+  "courses": {
+    "title": "Dă atitudine viselor tale!",
+    "lede": "Attitude este școala de balet a Operei Române Craiova. Oferim cursuri de balet pentru toate nivelurile, începând cu vârsta de 3 ani, și punem accent pe dezvoltarea grației, disciplinei și încrederii în sine, într-un mediu prietenos și inspirațional.",
+    "photo": "galerie/00-la-bara.jpg",
+    "photoAlt": "Eleve exersând la bară, în sala de balet",
+    "offeringsHeading": "Cursuri",
+    "offerings": [
+      {
+        "name": "Balet de la 3 ani",
+        "desc": "Pentru toate vârstele și nivelurile. Dezvoltăm tehnica și grația, creștem încrederea și disciplina, cu energie, prietenie și bucuria dansului."
+      },
+      {
+        "name": "Cursuri de vară",
+        "desc": "În lunile iulie și august continuăm să dansăm, să visăm și să ne perfecționăm și vara!"
+      }
+    ]
+  },
+  "teachers": [
+    { "name": "Olguța Ilie", "role": "Profesor" },
+    { "name": "Erna Marin", "role": "Profesor" },
+    { "name": "Ruxandra Andruță", "role": "Profesor" }
+  ],
+  "gallery": [
+    { "src": "galerie/01-trio-alb-negru.jpg", "alt": "Trei eleve în tutu, fotografie alb-negru" },
+    { "src": "galerie/02-winter-dance.jpg", "alt": "Eleve în rochii turcoaz, în spectacolul „Winter Dance”" },
+    { "src": "galerie/03-lebede.jpg", "alt": "Eleve în tutu alb, pe scena Operei" },
+    { "src": "galerie/04-tutu-rosu-scena.jpg", "alt": "Eleve în tutu roșu, pe scenă" },
+    { "src": "galerie/05-opera-rosu.jpg", "alt": "Eleve în costume roșii, pe scena Operei" },
+    { "src": "galerie/06-strauss.jpg", "alt": "Eleve în tutu alb, în spectacolul „Strauss Forever”" },
+    { "src": "galerie/07-lacul-lebedelor.jpg", "alt": "Eleve în tutu alb, în „Lacul lebedelor”" },
+    { "src": "galerie/08-culise.jpg", "alt": "Eleve în culise, înainte de spectacol" },
+    { "src": "galerie/09-giselle.jpg", "alt": "Eleve în rochii mov, în „Giselle”" },
+    { "src": "galerie/10-palat.jpg", "alt": "Eleve în tutu alb, pe scena Operei" },
+    { "src": "galerie/11-spectacol-iarna.jpg", "alt": "Eleve în rochii albe de voal, la spectacolul de iarnă" },
+    { "src": "galerie/12-magia-craciunului.jpg", "alt": "Eleve în tutu roșu, la „Magia Crăciunului la Operă”" }
+  ],
+  "contact": {
+    "addressLines": ["Opera Română Craiova", "Strada Popoveni 3C, Craiova"],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Opera+Rom%C3%A2n%C4%83+Craiova",
+    "phone": "0764 863 843",
+    "phoneHref": "tel:+40764863843",
+    "facebook": "https://www.facebook.com/attitudebalet",
+    "instagram": "attitudeballetcraiova",
+    "intro": "Pentru informații și înscrieri, sunați-ne sau scrieți-ne pe Facebook."
+  }
+}
