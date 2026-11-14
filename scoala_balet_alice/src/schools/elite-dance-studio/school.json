@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "title": "Elite Dance Studio — Balet și dans contemporan, Craiova",
+    "description": "Școala de Balet și Dans Contemporan Elite Dance Studio din Craiova — balet pentru copii de la 4 ani, dans contemporan, dans modern și balet pentru adulți. Mai mult decât dans!",
+    "shareImage": "share.jpg"
+  },
+  "brand": {
+    "name": "Elite",
+    "kind": "Dance Studio"
+  },
+  "hero": {
+    "motto": "Mai mult decât dans!",
+    "image": "cutouts/tutu-albastru.png",
+    "imageAlt": "Balerină în tutu albastru, pe poante"
+  },
+  "courses": {
+    "title": "Pași mici către visuri mari",
+    "lede": "Elite, 10 ani de poveste: o școală de balet și dans contemporan unde dansul devine familie. Grație, disciplină, încredere și prietenie, pentru copii de la 4 ani și pentru adulți.",
+    "photo": "galerie/00-dorothy.jpg",
+    "photoAlt": "Dorothy, în spectacolul „Vrăjitorul din Oz”",
+    "offeringsHeading": "Cursuri",
+    "offerings": [
+      {
+        "name": "Balet pentru copii",
+        "desc": "De la 4 ani: eleganță, disciplină și grația baletului. Grupa de 4–6 ani are ore lunea și joia, de la 18:00."
+      },
+      {
+        "name": "Dans contemporan",
+        "desc": "Fiecare, în ritmul ei. Fiecare, cu povestea ei."
+      },
+      {
+        "name": "Dans modern",
+        "desc": "Pentru copii între 4 și 7 ani."
+      },
+      {
+        "name": "Ladies Ballet",
+        "desc": "Balet pentru adulți, potrivit pentru toate nivelurile. Nu e niciodată prea târziu să faci ceva doar pentru tine."
+      }
+    ]
+  },
+  "teachers": [
+    {
+      "name": "Nicola Loredana",
+      "role": "Profesor · balet și dans contemporan"
+    },
+    {
+      "name": "Almahadin Amina",
+      "role": "Profesor · dans modern"
+    }
+  ],
+  "gallery": [
+    { "src": "galerie/01-tutu-alb-albastru.jpg", "alt": "Elevă în tutu alb cu albastru, cu brațele sus" },
+    { "src": "galerie/02-tutu-rosu.jpg", "alt": "Elevă în tutu roșu, pe scenă" },
+    { "src": "galerie/03-extensie-voal.jpg", "alt": "Elevă în extensie, în rochie de voal" },
+    { "src": "galerie/04-alb-negru.jpg", "alt": "Balerină în tutu, fotografie alb-negru" },
+    { "src": "galerie/05-tutu-mov.jpg", "alt": "Elevă în tutu mov, pe poante" },
+    { "src": "galerie/06-genunchi-albastru.jpg", "alt": "Elevă în tutu albastru, în genunchi" },
+    { "src": "galerie/07-ghirlande.jpg", "alt": "Eleve în rochii albe, cu ghirlande de flori" },
+    { "src": "galerie/08-atitudine-rosu.jpg", "alt": "Elevă în tutu roșu, pe scenă" },
+    { "src": "galerie/09-arabesque-alb.jpg", "alt": "Elevă în arabesque, în tutu alb" },
+    { "src": "galerie/10-vrajitorul-din-oz.jpg", "alt": "Elevii pe scenă, în spectacolul „Vrăjitorul din Oz”" },
+    { "src": "galerie/11-alb-scena.jpg", "alt": "Elevă în rochie albă, pe scenă" },
+    { "src": "galerie/12-releve-alb.jpg", "alt": "Elevă în tutu alb, în relevé" }
+  ],
+  "contact": {
+    "addressLines": ["Bulevardul Carol I nr. 101, etajul 2", "Craiova"],
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Bulevardul+Carol+I+101+Craiova",
+    "phone": "0768 744 001",
+    "phoneHref": "tel:+40768744001",
+    "facebook": "https://www.facebook.com/BaletCraiova",
+    "instagram": "elitedancestudio_craiova",
+    "intro": "Înscrieri la balet și dans contemporan: 0768 744 001 (Loredana). Înscrieri la dans modern: 0764 749 929 (Amina)."
+  }
+}
