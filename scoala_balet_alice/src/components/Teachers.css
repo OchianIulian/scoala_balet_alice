@@ -132,3 +132,8 @@
   left: 50%;
   translate: -50% 0;
 }
+
+/* with no photos anywhere, the names fit side by side, however many */
+.teachers__list:not(:has(.teacher__photo)) {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
